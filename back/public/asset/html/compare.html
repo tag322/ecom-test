@@ -1,0 +1,255 @@
+@@include('./templates/header.html',{title: "Сравнение"})
+
+<div class="content compare-page" id="compare-page">
+	
+	<div class="breadcrumb-with-title">
+		@@include('./templates/components/breadcrumb.html')
+		
+		
+		<div class="head-title title-normal">
+			<h1 class="h2">Сравнение товаров</h1>
+			
+			<a class="text-ico" href="">
+				<img alt="" class="svg" src="/img/ico/trash.svg">
+				<span class="text-ico__name">Очистить сравнение</span>
+			</a>
+		
+		</div>
+	</div>
+	
+	<ul class="compare-nav">
+		<li>
+			<a class="compare-nav-itm" href="">Напольные покрытия: 4</a>
+		</li>
+		<li>
+			<a class="compare-nav-itm active" href="">Еще какие-то покрытия: 6</a>
+		</li>
+	</ul>
+	
+	<div class="compare-body">
+		<div class="compare-grid">
+			<div class="compare-grid-aside">
+				<ul class="compare-grid-options">
+					<li>
+						<input checked class="js-radio js-compare-diff-type-input" name="compare-type" placeholder="Все характеристики" type="radio" value="all">
+					</li>
+					<li>
+						<input class="js-radio js-compare-diff-type-input" name="compare-type" placeholder="Показать различия" type="radio" value="diff">
+					</li>
+				</ul>
+			</div>
+			<div class="compare-grid-main">
+				<div class="compare-products js-compare-move">
+					
+					@@include('./templates/components/product.html',{num: "1",sku:"№1 Арт. GO4CORK OPTIMAL 1000",name:"№1 Go4Cork OPTIMAL",desc:"short", head_type: "v1", class: "js-compare-move-itm"})
+					
+					@@include('./templates/components/product.html',{num: "2",sku:"№2 Арт. GO4CORK OPTIMAL 1000",name:"№2 Go4Cork OPTIMAL пробковая подложка",desc:"", head_type: "v2", class: "js-compare-move-itm"})
+					
+					@@include('./templates/components/product.html',{num: "3",sku:"№3 Арт. GO4CORK OPTIMAL 1000",name:"№3 Go4Cork OPTIMAL",desc:"short", head_type: "v1", class: "js-compare-move-itm"})
+					
+					@@include('./templates/components/product.html',{num: "4",sku:"№4 Арт. GO4CORK OPTIMAL 1000",name:"№4 Go4Cork OPTIMAL пробковая подложка",desc:"", head_type: "v2", class: "js-compare-move-itm"})
+					
+					@@include('./templates/components/product.html',{num: "5",sku:"№5 Арт. GO4CORK OPTIMAL 1000",name:"№5 Go4Cork OPTIMAL",desc:"short", head_type: "v1", class: "js-compare-move-itm"})
+					
+					@@include('./templates/components/product.html',{num: "6",sku:"№6 Арт. GO4CORK OPTIMAL 1000",name:"№6 Go4Cork OPTIMAL пробковая подложка",desc:"", head_type: "v2", class: "js-compare-move-itm"})
+				
+				</div>
+				
+				
+				<div class="compare-grid-nav-mobile">
+					<div class="compare-grid-nav-mobile__product">
+						<div class="compare-grid-nav-mobile__product__btn js-compare-left-prev">
+							<img alt="" class="svg" src="/img/ico/arrow.svg">
+						</div>
+						<div class="compare-grid-nav-mobile__product__count">
+							<span class="js-compare-num-left">1</span>/6
+						</div>
+						<div class="compare-grid-nav-mobile__product__btn js-compare-left-next">
+							<img alt="" class="svg" src="/img/ico/arrow.svg">
+						</div>
+					</div>
+					<div class="compare-grid-nav-mobile__product">
+						<div class="compare-grid-nav-mobile__product__btn js-compare-right-prev">
+							<img alt="" class="svg" src="/img/ico/arrow.svg">
+						</div>
+						<div class="compare-grid-nav-mobile__product__count">
+							<span class="js-compare-num-right">2</span>/6
+						</div>
+						<div class="compare-grid-nav-mobile__product__btn js-compare-right-next">
+							<img alt="" class="svg" src="/img/ico/arrow.svg">
+						</div>
+					</div>
+				</div>
+				
+				<div class="compare-grid-nav">
+					<div class="compare-grid-nav__btn js-compare-prev">
+						<img alt="" class="svg" src="/img/ico/arrow.svg">
+					</div>
+					<div class="compare-grid-nav__btn js-compare-next">
+						<img alt="" class="svg" src="/img/ico/arrow.svg">
+					</div>
+				</div>
+			
+			</div>
+		
+		</div>
+		
+		<div class="js-compare-fixed-start"></div>
+		<div class="compare-fixed-head">
+			<div class="content">
+				<div class="compare-grid">
+					<div class="compare-grid-aside">
+						<ul class="compare-grid-options">
+							<li>
+								<label class="radio_box checked">
+									<input checked="" class="js-radio js-compare-diff-type-input" name="compare-type-fixed" placeholder="Все характеристики" type="radio" value="all"><span class="radio_box__item"></span><span class="radio_box__text">Все характеристики</span>
+								</label>
+							</li>
+							<li>
+								<label class="radio_box">
+									<input class="js-radio js-compare-diff-type-input" name="compare-type-fixed" placeholder="Показать различия" type="radio" value="diff"><span class="radio_box__item"></span><span class="radio_box__text">Показать различия</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+					<div class="compare-grid-main">
+						
+						<div class="compare-products js-compare-move">
+							
+							@@for(i=0;i<5;i++){
+							<div class="fixed-head-product js-compare-move-itm">
+								<div class="fixed-head-product__head">
+									<div class="fixed-head-product__img">
+										<img alt="" class="fill-img" loading="lazy" src="/img/tmp/product.jpg">
+									</div>
+									<div class="fixed-head-product__name">№`+i+` Go4Cork OPTIMAL</div>
+								</div>
+								<div class="fixed-head-product__actions">
+									<div class="price-block-val__itm active" data-type="m2">
+										<span class="price price--old">1 590 ₽</span> <span class="price">986 ₽</span>
+									</div>
+									@@include('./templates/components/add_cart_btn.html')
+								</div>
+							</div>
+							
+							<div class="fixed-head-product js-compare-move-itm">
+								<div class="fixed-head-product__head">
+									<div class="fixed-head-product__img">
+										<img alt="" class="fill-img" loading="lazy" src="/img/tmp/banner-bg.jpg">
+									</div>
+									<div class="fixed-head-product__name">№`+i+` Go4Cork OPTIMAL пробковая подложка</div>
+								</div>
+								<div class="fixed-head-product__actions">
+									<div class="price-block-val__itm active" data-type="m2">
+										<span class="price price--old">1 590 ₽</span> <span class="price">986 ₽</span>
+									</div>
+									@@include('./templates/components/add_cart_btn.html')
+								</div>
+							</div>
+							}
+						
+						</div>
+						
+						<div class="compare-grid-nav-mobile">
+							<div class="compare-grid-nav-mobile__product">
+								<div class="compare-grid-nav-mobile__product__btn js-compare-left-prev">
+									<img alt="" class="svg" src="/img/ico/arrow.svg">
+								</div>
+								<div class="compare-grid-nav-mobile__product__count">
+									<span class="js-compare-num-left">1</span>/6
+								</div>
+								<div class="compare-grid-nav-mobile__product__btn js-compare-left-next">
+									<img alt="" class="svg" src="/img/ico/arrow.svg">
+								</div>
+							</div>
+							<div class="compare-grid-nav-mobile__product">
+								<div class="compare-grid-nav-mobile__product__btn js-compare-right-prev">
+									<img alt="" class="svg" src="/img/ico/arrow.svg">
+								</div>
+								<div class="compare-grid-nav-mobile__product__count">
+									<span class="js-compare-num-right">2</span>/6
+								</div>
+								<div class="compare-grid-nav-mobile__product__btn js-compare-right-next">
+									<img alt="" class="svg" src="/img/ico/arrow.svg">
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="compare-grid-nav">
+							<div class="compare-grid-nav__btn js-compare-prev">
+								<img alt="" class="svg" src="/img/ico/arrow.svg">
+							</div>
+							<div class="compare-grid-nav__btn js-compare-next">
+								<img alt="" class="svg" src="/img/ico/arrow.svg">
+							</div>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="compare-diff-mobile">
+			<input type="checkbox" class="js-checkbox-switcher js-compare-diff-type-check" placeholder="Показать различия">
+		</div>
+		
+		<div class="compare-grid compare-grid--th">
+			<div class="compare-grid-aside compare-grid-aside--center">
+				<div class="compare-grid-aside__attr-title">Рейтинг</div>
+			</div>
+			<div class="compare-grid-main compare-grid__tr-body js-compare-move">
+				@@for(i=0;i<3;i++){
+				<div class="compare-grid-td js-compare-move-itm">
+					<div class="star-line">
+						<img alt="" class="star star--full svg" src="./img/ico/star-half.svg">
+						<img alt="" class="star star--full svg" src="./img/ico/star-half.svg">
+						<img alt="" class="star star--full svg" src="./img/ico/star-half.svg">
+						<img alt="" class="star svg" src="./img/ico/star-half.svg">
+						<img alt="" class="star star--empty svg" src="./img/ico/star-half.svg">
+					</div>
+					<div class="compare-grid-td__text">86 отзывов</div>
+				</div>
+				<div class="compare-grid-td js-compare-move-itm">
+					<div class="star-line">
+						<img alt="" class="star star--full svg" src="./img/ico/star-half.svg">
+						<img alt="" class="star star--full svg" src="./img/ico/star-half.svg">
+						<img alt="" class="star star--full svg" src="./img/ico/star-half.svg">
+						<img alt="" class="star star--full svg" src="./img/ico/star-half.svg">
+						<img alt="" class="star star svg" src="./img/ico/star-half.svg">
+					</div>
+					<div class="compare-grid-td__text">44 отзывов</div>
+				</div>
+				}
+			</div>
+		</div>
+		
+		@@for(i=0;i<2;i++){
+		
+		@@include('./templates/components/compare-line.html',{title: 'Тип укладки', val1: 'Замковый `+i+`',val2:'Клеевой `+i+`'})
+		
+		@@include('./templates/components/compare-line.html',{title: 'м<sup class="square">2</sup> в упаковке', val1: '2.153',val2:'6'})
+		
+		@@include('./templates/components/compare-line.html',{title: 'Длина плитки', val1: '1380.00 мм',val2:'1292.00 мм'})
+		
+		@@include('./templates/components/compare-line.html',{title: 'Ширина плитки', val1: '1380.00 мм',val2:'1380.00 мм'})
+		
+		@@include('./templates/components/compare-line.html',{title: 'Вес упаковки', val1: '15.000 кг',val2:'19.000 кг'})
+		
+		@@include('./templates/components/compare-line.html',{title: 'Штук в упаковке', val1: '19',val2:'19'})
+		
+		}
+	</div>
+	
+	<div class="compare-foot">
+		<a class="arrow-top js-anchor" href="#compare-page">
+			<img alt="" class="svg" src="/img/ico/arrow.svg">
+		</a>
+	</div>
+
+</div>
+
+
+@@include('./templates/footer.html')
+

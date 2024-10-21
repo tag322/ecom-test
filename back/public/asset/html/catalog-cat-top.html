@@ -1,0 +1,377 @@
+@@include('./templates/header.html',{title: "Каталог (с категориями сверху в фильтре)"})
+
+<div class="content">
+	
+	<div class="breadcrumb-with-title">
+		@@include('./templates/components/breadcrumb.html')
+		
+		<h1>Ламинат</h1>
+	</div>
+	
+	<div class="catalog-cat">
+		
+		@@for(i=0;i<5;i++){
+		<a class="catalog-cat-itm" href="">
+			<img alt="" class="catalog-cat-itm__img" src="https://dummyimage.com/100x100">
+			<div class="catalog-cat-itm__name">Ламинат Дуб</div>
+		</a>
+		
+		<a class="catalog-cat-itm" href="">
+			<img alt="" class="catalog-cat-itm__img" src="/img/tmp/decor-small.jpg">
+			<div class="catalog-cat-itm__name">Кварц-виниловые покрытия (LVT) Здесь мы проверяем насколько длинное название может поместиться в эту карточку</div>
+		</a>
+		}
+	
+	</div>
+	
+	<div class="catalog js-view-parent" id="catalog-block">
+		<form class="catalog-filter">
+			
+			<div class="catalog-filter-head">
+				<img alt="" class="svg" src="/img/ico/filter.svg">
+				<div class="catalog-filter-head__title h4">Фильтры</div>
+			</div>
+			
+			@@for(i=0;i<3;i++){
+			
+			<div class="catalog-filter-accordion js-accordion">
+				<div class="catalog-filter-accordion__head js-accordion-head">
+					<div class="catalog-filter-accordion__head__name">Категории</div>
+					<img alt="" class="svg catalog-filter-accordion__head__arrow" src="/img/ico/caret-down.svg">
+				</div>
+				
+				<div class="catalog-filter-accordion__body js-accordion-body">
+					<ul class="filter-list">
+						<li>@@include('./templates/UI/filter-itm.html',{name: "LVT", count: "4", type: "checkbox", input_name: "", color: ""})</li>
+						<li>@@include('./templates/UI/filter-itm.html',{name: "SPS", count: "124", type: "checkbox", input_name: "", color: ""})</li>
+						<li>@@include('./templates/UI/filter-itm.html',{name: "Ламинат", count: "4", type: "checkbox", input_name: "", color: ""})</li>
+						<li>@@include('./templates/UI/filter-itm.html',{name: "Линолеум", count: "1", type: "checkbox", input_name: "", color: ""})</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+			<div class="catalog-filter-accordion js-accordion">
+				<div class="catalog-filter-accordion__head js-accordion-head">
+					<div class="catalog-filter-accordion__head__name">Стоимость</div>
+					<img alt="" class="svg catalog-filter-accordion__head__arrow" src="/img/ico/caret-down.svg">
+				</div>
+				
+				<div class="catalog-filter-accordion__body js-accordion-body">
+					<div class="filter-itm__content">
+						<div class="range-input-container">
+							<div class="range-input-block">
+								<input class="range-input before" type="text" value="1 300">
+							</div>
+							<div class="range-input-block">
+								<input class="range-input after" type="text" value="220 000">
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+						<div class="range-select" data-max="220000" data-min="1300"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="catalog-filter-accordion js-accordion">
+				<div class="catalog-filter-accordion__head js-accordion-head">
+					<div class="catalog-filter-accordion__head__name">Цвета</div>
+					<img alt="" class="svg catalog-filter-accordion__head__arrow" src="/img/ico/caret-down.svg">
+				</div>
+				
+				<div class="catalog-filter-accordion__body js-accordion-body">
+					<ul class="filter-list">
+						<li>@@include('./templates/UI/filter-itm.html',{name: "бежевый", count: "4", type: "checkbox", input_name: "", color: "/img/color-icons/bej.svg"})</li>
+						<li>@@include('./templates/UI/filter-itm.html',{name: "черный", count: "4", type: "checkbox", input_name: "", color: "/img/color-icons/black.svg"})</li>
+						<li>@@include('./templates/UI/filter-itm.html',{name: "синий", count: "4", type: "checkbox", input_name: "", color: "/img/color-icons/blue.svg"})</li>
+						<li>@@include('./templates/UI/filter-itm.html',{name: "коричневый", count: "4", type: "checkbox", input_name: "", color: "/img/color-icons/brown.svg"})</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="catalog-filter-accordion">
+				<div class="catalog-filter-accordion__head">
+					<div class="catalog-filter-accordion__head__name">Влагостойкость</div>
+					<input class="js-checkbox-switcher" placeholder="" type="checkbox">
+				</div>
+			</div>
+			
+			}
+			
+			<div class="catalog-filter-foot">
+				<a class="catalog-filter-foot__btn js-open-modal btn" href="#modal-catalog-filter">Открыть все фильтры</a>
+				<input class="catalog-filter-foot__btn btn btn--line js-reset-form" type="reset" value="Сбросить все фильтры">
+			</div>
+		
+		</form>
+		<div class="catalog-filter-main">
+			
+			<div class="quick-filter">
+				<ul class="quick-filter-list">
+					@@for(i=0;i<5;i++){
+					<li>
+						<a class="quick-filter-itm active" href="">
+							<span>33 класс</span><span class="quick-filter-itm__remove"><span class="cross"></span></span>
+						</a>
+					</li>
+					<li>
+						<a class="quick-filter-itm active" href="">
+							<span>под бетон</span><span class="quick-filter-itm__remove"><span class="cross"></span></span>
+						</a>
+					</li>
+					<li>
+						<a class="quick-filter-itm" href="">
+							<span>под дерево</span><span class="quick-filter-itm__remove"><span class="cross"></span></span></a>
+					</li>
+					<li>
+						<a class="quick-filter-itm" href="">
+							<span>под мрамор</span><span class="quick-filter-itm__remove"><span class="cross"></span></span></a>
+					</li>
+					<li>
+						<a class="quick-filter-itm" href="">
+							<span>коричневый</span><span class="quick-filter-itm__remove"><span class="cross"></span></span></a>
+					</li>
+					<li>
+						<a class="quick-filter-itm" href="">
+							<span>бежевый</span><span class="quick-filter-itm__remove"><span class="cross"></span></span>
+						</a>
+					</li>
+					<li>
+						<a class="quick-filter-itm" href="">
+							<span>32 класс</span><span class="quick-filter-itm__remove"><span class="cross"></span></span>
+						</a>
+					</li>
+					<li>
+						<a class="quick-filter-itm" href="">
+							<span>толщина 7 мм</span><span class="quick-filter-itm__remove"><span class="cross"></span></span>
+						</a>
+					</li>
+					}
+				</ul>
+				
+				<button class="quick-filter-more-btn">
+					<span class="quick-filter-more-btn__more-text">Показать ещё</span> <span class="quick-filter-more-btn__less-text">Cвернуть</span>
+					<img alt="" class="svg quick-filter-more-btn__ico" loading="lazy" src="/img/ico/caret-down.svg">
+				</button>
+			</div>
+			
+			<div class="catalog-filter-info">
+				<a class="btn js-open-modal catalog-filter-info__mobile" href="#modal-catalog-filter">Фильтры</a>
+				<div class="catalog-filter-info__count">Найдено 836 товаров</div>
+				<div class="catalog-filter-info__action">
+					<select class="js-select">
+						<option value="">Сначала недорогие</option>
+						<option value="">Сначала дорогие</option>
+						<option value="">Сначала популярные</option>
+						<option value="">По скидке (%)</option>
+						<option value="">Сначала с лучшей ценой</option>
+					</select>
+					
+					<div class="catalog-filter-info__view">
+						<a class="catalog-filter-info__btn js-change-catalog-view active" data-catalog-view="grid" href="">
+							<img alt="" class="svg" src="/img/ico/grid.svg">
+						</a>
+						
+						<a class="catalog-filter-info__btn js-change-catalog-view" data-catalog-view="list" href="">
+							<img alt="" class="svg" src="/img/ico/list.svg">
+						</a>
+					</div>
+				
+				</div>
+			</div>
+			
+			<div class="catalog-filter-product">
+				@@for(i=0;i<2;i++){
+				
+				@@include('./templates/components/product.html',{sku:"Арт. GO4CORK OPTIMAL 1000",name:"Go4Cork OPTIMAL",desc:"short", head_type: "v1"})
+				
+				@@include('./templates/components/product.html',{sku:"Арт. GO4CORK OPTIMAL 1000",name:"Go4Cork OPTIMAL пробковая подложка",desc:"", head_type: "v2"})
+				
+				@@include('./templates/components/product.html',{sku:"Арт. 169000000000001170",name:"ARBITON LM60 заглушка правая для плинтуса 77 Песчаный дуб",desc:"", head_type: "v3"})
+				
+				}
+			</div>
+			
+			<div class="catalog-filter-main-foot">
+				<div class="catalog-filter-main-foot__pagination">
+					@@include('./templates/pagination.html')
+				</div>
+				<div class="catalog-filter-main-foot__action">
+					<a class="arrow-top js-anchor" href="#catalog-block">
+						<img alt="" class="svg" src="/img/ico/arrow.svg">
+					</a>
+					
+					<button class="btn btn--line">Показать ещё</button>
+				</div>
+			</div>
+			
+			<div class="show-more-block often-block">
+				<div class="show-more-text">
+					<div class="show-more-text__content">
+						<div class="catalog-desc">
+							<h4 class="title-normal">Часто ищут</h4>
+							<ul class="often-cols">
+								@@for(i=0;i<15;i++){
+								<li>
+									<a class="often-itm" href="/">Ламинат 12 мм</a>
+								</li>
+								<li>
+									<a class="often-itm" href="/">Ламинат 33 класс с фаской</a>
+								</li>
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="show-more-btn"><span class="text-more">Показать ещё</span><span class="text-lese">Закрыть</span></div>
+			</div>
+			
+			<div class="text-format catalog-foot-desc">
+				<h4>Виды напольных покрытий</h4>
+				<p>В ассортименте магазина присутствуют все виды напольных покрытий, которые используются современными дизайнерами и строителями. Ламинат и ковролин, паркет и пробка, доска из массива дерева и линолеум – обширные модельные ряды позволят воплотить любые дизайнерские идеи.</p>
+				<p>При выборе покрытия для различных помещений дома, квартиры или офиса необходимо руководствоваться не только эстетическими предпочтениями, но и практическим опытом их использования. Там, где пол эксплуатируется более активно и чаще подвергается сухой или влажной уборке, следует укладывать износостойкие покрытия, допускающие частое мытье и чистку – ламинат, линолеум, жесткий ковролин. В зонах менее активной эксплуатации пола выбор покрытия не ограничен строгими условиями.</p>
+				<h4>Все для укладки напольного покрытия</h4>
+				<p>Мы рады предложить потребителю все, что необходимо для грамотной технологичной укладки: плинтусы, пороги, материалы для подложки, а также клеи и герметики для различных видов напольных покрытий. Цены в нашем магазине отвечают основному принципу «Vkvadrate»: товары высокого качества по минимальной стоимости. Мы выбираем для продажи клеи, герметики и прочие аксессуары для покрытий от производителей, имеющих давнюю надежную репутацию.</p>
+			</div>
+		
+		</div>
+	</div>
+
+
+</div>
+
+<div class="modal" id="modal-catalog-filter">
+	<div class="modal-fade js-close-modal"></div>
+	<form action="" class="modal-content modal-catalog-filter">
+		<div class="modal-catalog-filter__inner">
+			
+			<div class="modal-catalog-filter__head">
+				<div class="modal-head-mobile">
+					<div class="modal-head-mobile__left"></div>
+					<div class="modal-head-mobile__title h3">Фильтры</div>
+					<div class="modal-head-mobile__close js-close-modal">
+						<div class="cross"></div>
+					</div>
+				</div>
+				
+				<div class="modal-catalog-filter__title h3">
+					<img alt="" class="svg" src="/img/ico/filter.svg">
+					<span>Все фильтры</span>
+				</div>
+				
+				<label class="modal-facet-filter-search">
+					<input class="js-search-modal-filter" placeholder="Поиск по фильтрам" type="text">
+					<img alt="" class="svg modal-facet-filter-search-ico" src="/img/ico/search.svg">
+				</label>
+			</div>
+			
+			<div class="modal-filter-list">
+				@@for(i=0;i<4;i++){
+				
+				<div class="modal-filter-list__col">
+					
+					<div class="catalog-filter-accordion js-accordion">
+						<div class="catalog-filter-accordion__head js-accordion-head">
+							<div class="catalog-filter-accordion__head__name">Категории</div>
+							<img alt="" class="svg catalog-filter-accordion__head__arrow" src="/img/ico/caret-down.svg">
+						</div>
+						
+						<div class="catalog-filter-accordion__body js-accordion-body">
+							<ul class="filter-list">
+								<li>@@include('./templates/UI/filter-itm.html',{name: "LVT", count: "4", type: "checkbox", input_name: "", color: ""})</li>
+								<li>@@include('./templates/UI/filter-itm.html',{name: "SPS", count: "124", type: "checkbox", input_name: "", color: ""})</li>
+								<li>@@include('./templates/UI/filter-itm.html',{name: "Ламинат", count: "4", type: "checkbox", input_name: "", color: ""})</li>
+								<li>@@include('./templates/UI/filter-itm.html',{name: "Линолеум", count: "1", type: "checkbox", input_name: "", color: ""})</li>
+							</ul>
+						</div>
+					</div>
+					
+					
+					<div class="catalog-filter-accordion js-accordion">
+						<div class="catalog-filter-accordion__head js-accordion-head">
+							<div class="catalog-filter-accordion__head__name">Стоимость</div>
+							<img alt="" class="svg catalog-filter-accordion__head__arrow" src="/img/ico/caret-down.svg">
+						</div>
+						
+						<div class="catalog-filter-accordion__body js-accordion-body">
+							<div class="filter-itm__content">
+								<div class="range-input-container">
+									<div class="range-input-block">
+										<input class="range-input before" type="text" value="1 300">
+									</div>
+									<div class="range-input-block">
+										<input class="range-input after" type="text" value="220 000">
+									</div>
+								</div>
+								
+								<div class="clear"></div>
+								<div class="range-select" data-max="220000" data-min="1300"></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="catalog-filter-accordion js-accordion">
+						<div class="catalog-filter-accordion__head js-accordion-head">
+							<div class="catalog-filter-accordion__head__name">Цвета</div>
+							<img alt="" class="svg catalog-filter-accordion__head__arrow" src="/img/ico/caret-down.svg">
+						</div>
+						
+						<div class="catalog-filter-accordion__body js-accordion-body">
+							<ul class="filter-list">
+								<li>@@include('./templates/UI/filter-itm.html',{name: "бежевый", count: "4", type: "checkbox", input_name: "", color: "/img/color-icons/bej.svg"})</li>
+								<li>@@include('./templates/UI/filter-itm.html',{name: "черный", count: "4", type: "checkbox", input_name: "", color: "/img/color-icons/black.svg"})</li>
+								<li>@@include('./templates/UI/filter-itm.html',{name: "синий", count: "4", type: "checkbox", input_name: "", color: "/img/color-icons/blue.svg"})</li>
+								<li>@@include('./templates/UI/filter-itm.html',{name: "коричневый", count: "4", type: "checkbox", input_name: "", color: "/img/color-icons/brown.svg"})</li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="catalog-filter-accordion">
+						<div class="catalog-filter-accordion__head">
+							<div class="catalog-filter-accordion__head__name">Влагостойкость</div>
+							<input class="js-checkbox-switcher" placeholder="" type="checkbox">
+						</div>
+					</div>
+				</div>
+				}
+			</div>
+		</div>
+		
+		<ul class="modal-filter-current">
+			<li>
+				<a class="modal-filter-current-itm" href="">LVT <span class="cross"></span></a>
+			</li>
+			<li>
+				<a class="modal-filter-current-itm" href="">SPC <span class="cross"></span></a>
+			</li>
+			<li>
+				<a class="modal-filter-current-itm" href="">Ламинат <span class="cross"></span></a>
+			</li>
+			<li>
+				<a class="modal-filter-current-itm" href="">FineFloor <span class="cross"></span></a>
+			</li>
+			<li>
+				<a class="modal-filter-current-itm" href="">Красно-бордовый <span class="cross"></span></a>
+			</li>
+			<li>
+				<a class="modal-filter-current-itm" href="">Синезеленый <span class="cross"></span></a>
+			</li>
+			<li>
+				<a class="modal-filter-current-reset" href="">Сбросить фильтры</a>
+			</li>
+		</ul>
+		
+		<div class="modal-filter-foot">
+			<a class="btn btn--line" href="">Сбросить</a>
+			<a class="btn js-close-modal" href="#">Показать 657 товаров</a>
+		</div>
+	</form>
+</div>
+
+
+@@include('./templates/fly-btn.html')
+
+
+@@include('./templates/footer.html')
+

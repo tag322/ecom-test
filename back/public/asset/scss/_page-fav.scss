@@ -1,0 +1,21 @@
+.fav-empty {
+	width: 40rem;
+	max-width: 100%;
+	margin: 1.5rem auto;
+	display: block;
+	text-align: center;
+
+	&__img {
+		margin-bottom: 1.5rem;
+		width: 25.625rem;
+		max-width: 100%;
+	}
+
+	&__title {
+		margin-bottom: 2rem;
+	}
+
+	&__desc {
+		margin-bottom: 1.5rem;
+	}
+}

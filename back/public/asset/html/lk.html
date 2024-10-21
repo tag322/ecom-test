@@ -1,0 +1,97 @@
+@@include('./templates/header.html',{title: "ЛК - главная"})
+
+<div class="content">
+	
+	<div class="breadcrumb-with-title">
+		
+		@@include('./templates/components/breadcrumb.html')
+		
+		<h1 class="title-normal">Личный кабинет</h1>
+	
+	</div>
+	
+	<div class="lk-main-grid">
+		<aside class="lk-aside">
+			@@include('./templates/lk-nav.html')
+		</aside>
+		<div class="lk-main-content">
+			
+			<div class="lk-user">
+				
+				<a href="/lk-personal.html" class="lk-user-head">
+					<div class="lk-user-head-val">
+						<div class="lk-user__desc">Личные данные</div>
+						<h3 class="lk-user__name">Кристина</h3>
+					</div>
+					<div class="lk-user-head__arrow">
+						<img alt="" class="svg" src="/img/ico/arrow.svg">
+					</div>
+				</a>
+				
+				<div class="lk-user-foot">
+					<a class="lk-user-foot__email" href="mailto:ke@lesqa.ru">ke@lesqa.ru</a>
+					<a class="lk-user-foot__link" href="/lk-change-pass.html">Сменить пароль</a>
+				</div>
+			
+			</div>
+			
+			<div class="lk-grid-nav">
+				
+				<a class="lk-grid-nav-itm" href="">
+					<img alt="" class="lk-grid-nav-itm__ico svg" src="/img/ico/heart.svg">
+					<h4 class="lk-grid-nav-itm__name">Избранное</h4>
+					<span class="lk-grid-nav-itm__desc">Нет товаров</span>
+				</a>
+				
+				<a class="lk-grid-nav-itm" href="">
+					<img alt="" class="lk-grid-nav-itm__ico svg" src="/img/ico/basket-full.svg">
+					<h4 class="lk-grid-nav-itm__name">Заказы</h4>
+					<span class="lk-grid-nav-itm__desc">Нет заказов</span>
+				</a>
+				
+				<a class="lk-grid-nav-itm" href="">
+					<img alt="" class="lk-grid-nav-itm__ico svg" src="/img/ico/mail.svg">
+					<h4 class="lk-grid-nav-itm__name">Подписки</h4>
+					<span class="lk-grid-nav-itm__desc">Рассылки и товары</span>
+				</a>
+				
+				<a class="lk-grid-nav-itm" href="">
+					<img alt="" class="lk-grid-nav-itm__ico svg" src="/img/ico/user.svg">
+					<h4 class="lk-grid-nav-itm__name">Профиль</h4>
+					<span class="lk-grid-nav-itm__desc">Нет профилей</span>
+				</a>
+				
+				<a class="lk-grid-nav-itm" href="">
+					<img alt="" class="lk-grid-nav-itm__ico svg" src="/img/ico/info-round.svg">
+					<h4 class="lk-grid-nav-itm__name">Профиль</h4>
+					<span class="lk-grid-nav-itm__desc">Нет профилей</span>
+				</a>
+			
+			</div>
+			
+			<div class="lk-section-product-list">
+				<h3>Вам может понравиться</h3>
+				
+				<div class="product-slider-lk">
+					@@for(i=0;i<3;i++){
+					
+					@@include('./templates/components/product.html',{sku:"Арт. GO4CORK OPTIMAL 1000",name:"Go4Cork OPTIMAL",desc:"short", head_type: "v1"})
+					
+					@@include('./templates/components/product.html',{sku:"Арт. GO4CORK OPTIMAL 1000",name:"Go4Cork OPTIMAL пробковая подложка",desc:"", head_type: "v2"})
+					
+					@@include('./templates/components/product.html',{sku:"Арт. 169000000000001170",name:"ARBITON LM60 заглушка правая для плинтуса 77 Песчаный дуб",desc:"", head_type: "v3"})
+					
+					}
+				</div>
+				
+			</div>
+		
+		</div>
+	</div>
+
+
+</div>
+
+
+@@include('./templates/footer.html')
+

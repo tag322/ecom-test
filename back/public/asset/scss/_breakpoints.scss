@@ -1,0 +1,17 @@
+@mixin for-desktop-big {
+	@media (min-width: 1440px) {
+		@content;
+	}
+}
+
+@mixin for-tablet {
+	@media (max-width: 1100px) {
+		@content;
+	}
+}
+
+@mixin for-phone {
+	@media (max-width: 600px) {
+		@content;
+	}
+}

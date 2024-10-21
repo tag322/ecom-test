@@ -1,0 +1,41 @@
+@@include('./templates/header.html',{title: "Каталог (категории)"})
+
+<div class="content">
+	
+	<div class="breadcrumb-with-title">
+		@@include('./templates/components/breadcrumb.html')
+		
+		<h1>Каталог</h1>
+	
+	</div>
+	
+	<div class="catalog-main-cat">
+		
+		@@for(i=0;i<5;i++){
+		<a class="catalog-main-cat-itm" href="">
+			<img alt="" class="catalog-main-cat-itm__img" src="https://dummyimage.com/200x200">
+			<span class="catalog-main-cat-itm__name h5">Кварц-виниловые покрытия (LVT)</span>
+		</a>
+		
+		<a class="catalog-main-cat-itm" href="">
+			<img alt="" class="catalog-main-cat-itm__img" src="https://dummyimage.com/200x200">
+			<span class="catalog-main-cat-itm__name h5">Линолеум</span>
+		</a>
+		
+		<a class="catalog-main-cat-itm" href="">
+			<img alt="" class="catalog-main-cat-itm__img" src="https://dummyimage.com/200x200">
+			<span class="catalog-main-cat-itm__name h5">Клея и Строительная химия</span>
+		</a>
+		}
+	
+	</div>
+
+
+</div>
+
+
+@@include('./templates/fly-btn.html')
+
+
+@@include('./templates/footer.html')
+

@@ -1,0 +1,57 @@
+@@include('./templates/header.html',{title: "Избранное"})
+
+
+<div class="content js-view-parent" id="page-fav">
+	
+	<div class="breadcrumb-with-title">
+		@@include('./templates/components/breadcrumb.html')
+		
+		<h1 class="h2 title-small">Избранное</h1>
+	</div>
+	
+	
+	<div class="catalog-filter-info">
+		<a class="btn js-open-modal catalog-filter-info__mobile" href="#modal-catalog-filter">Фильтры</a>
+		<div class="catalog-filter-info__count">Найдено 836 товаров</div>
+		<div class="catalog-filter-info__action">
+			
+			<div class="catalog-filter-info__view">
+				<a class="catalog-filter-info__btn js-change-catalog-view active" data-catalog-view="grid" href="">
+					<img alt="" class="svg" src="/img/ico/grid.svg">
+				</a>
+				
+				<a class="catalog-filter-info__btn js-change-catalog-view" data-catalog-view="list" href="">
+					<img alt="" class="svg" src="/img/ico/list.svg">
+				</a>
+			</div>
+		
+		</div>
+	</div>
+	
+	<div class="product-grid-4">
+		@@for(i=0;i<4;i++){
+		
+		@@include('./templates/components/product.html',{sku:"Арт. GO4CORK OPTIMAL 1000",name:"Go4Cork OPTIMAL",desc:"short", head_type: "v1"})
+		
+		@@include('./templates/components/product.html',{sku:"Арт. GO4CORK OPTIMAL 1000",name:"Go4Cork OPTIMAL пробковая подложка",desc:"", head_type: "v2"})
+		
+		}
+	</div>
+	
+	<div class="catalog-filter-main-foot">
+		<div class="catalog-filter-main-foot__pagination">
+		
+		</div>
+		<div class="catalog-filter-main-foot__action">
+			
+			
+			<a class="arrow-top js-anchor" href="#page-fav">
+				<img alt="" class="svg" src="/img/ico/arrow.svg">
+			</a>
+		</div>
+	</div>
+
+</div>
+
+
+@@include('./templates/footer.html')

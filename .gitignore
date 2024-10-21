@@ -20,12 +20,7 @@ front/*.ntvs*
 front/*.njsproj
 front/*.sln
 front/*.sw?
-
-tmp/
-
-
-
-
+front/.env
 
 back/node_modules
 back/vendor
@@ -48,3 +43,5 @@ back/yarn-error.log
 back/.fleet
 back/.idea
 back/.vscode
+
+tmp/

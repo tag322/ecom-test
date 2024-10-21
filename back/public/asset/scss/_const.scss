@@ -1,0 +1,48 @@
+$F_main: 'Stapel';
+$F_title: 'Stapel';
+
+:root {
+	--fs-h1: 2.75rem;
+	--fs-h2: 2rem;
+	--fs-h3: 1.5rem;
+	--fs-h4: 1.25rem;
+	--fs-h5: 1rem;
+
+	--fs-presmall: 0.875rem;
+	--fs-small: 0.75rem;
+	--fs-smallest: 0.625rem;
+
+	--FF-Black: #171717;
+	--FF-White: #FFF;
+
+	--FF-D-Grey: #4E5359;
+	--V2-Grey-Mid: #B7BABE;
+	--FF-L-Grey: #CACDD2;
+	--FF-SL-Grey: #F7F8FA;
+	--V2-Header-color: #346;
+	--V2: #F5333F;
+	--V2-hover: #E52E3A;
+	--Star: linear-gradient(16deg, #FFCF3C 5.42%, #FFD500 94.55%);
+	--Orange: #FF6610;
+	--Green: #74C337;
+
+
+	@include for-tablet {
+		--fs-h1: 2rem;
+		--fs-h2: 1.75rem;
+	}
+
+	@include for-phone {
+		--fs-h1: 1.5rem;
+		--fs-h2: 1.375rem;
+		--fs-h3: 1.25rem;
+		--fs-h4: 1.125rem;
+		--fs-h5: 1rem;
+	}
+}
+
+$fs_h1: var(--fs-h1);
+$fs_h2: var(--fs-h2);
+$fs_h3: var(--fs-h3);
+$fs_h4: var(--fs-h4);
+$fs_h5: var(--fs-h5);

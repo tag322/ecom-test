@@ -1,0 +1,22 @@
+<picture>
+	@@if(src_tablet){
+	<source media="(max-width: 799px)" srcset="./img/webp/@@src_tablet.webp" type="image/webp"/>
+	<source media="(max-width: 799px)" srcset="./img/@@src_tablet.jpg" />
+	}
+	
+	@@if(src_mobile){
+	<source media="(max-width: 599px)" srcset="./img/webp/@@src_mobile.webp" type="image/webp"/>
+	<source media="(max-width: 599px)" srcset="./img/@@src_mobile.jpg" />
+	}
+	
+	@@if(src){
+	<source srcset="./img/webp/@@src.webp" type="image/webp">
+	<source srcset="./img/@@src.jpg" />
+	<img src="./img/@@src.jpg" alt="" loading="lazy" class="@@class"/>
+	}
+	
+	@@if(!src){
+	<img src="" alt="" loading="lazy" class="@@class"/>
+	}
+	
+</picture>

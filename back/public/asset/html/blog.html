@@ -1,0 +1,90 @@
+@@include('./templates/header.html', {title: "Блог"})
+
+<div class="content blog-page">
+	
+	<div class="breadcrumb-with-title">
+		@@include('./templates/components/breadcrumb.html')
+		
+		<h1>Блог</h1>
+	</div>
+	
+	
+	<div class="blog-head">
+		
+		<ul class="catalog-nav">
+			<li>
+				<a class="catalog-nav-itm active" href="">Статьи</a>
+			</li>
+			<li>
+				<a class="catalog-nav-itm" href="">Видео</a>
+			</li>
+			<li>
+				<a class="catalog-nav-itm" href="">Подкасты</a>
+			</li>
+			<li class="blog-sort-btn-mobile">
+				<a class="js-open-modal-mobile" href="#modal-blog-sort">
+					<img alt="" src="/img/ico/sorting.svg">
+				</a>
+			</li>
+		</ul>
+		
+		<select class="js-select">
+			<option value="1">Сначала полезные</option>
+			<option value="2">Сначала безполезные</option>
+		</select>
+	
+	</div>
+	
+	<ul class="quick-filter-list title-normal">
+		
+		<li>
+			<a class="quick-filter-itm" href="">как укладывать ламинат?</a>
+		</li>
+		<li>
+			<a class="quick-filter-itm" href="">как выбрать линолеум?</a>
+		</li>
+		<li>
+			<a class="quick-filter-itm" href="">чем опасно напольное покрытие?</a>
+		</li>
+	
+	</ul>
+	
+	<div class="blog-page-grid">
+		@@for(i=0;i<9;i++){
+		
+		@@include('./templates/components/blog-itm.html', {name: "Влагостойкость кварц-виниловой плитки Fine Floor"})
+		
+		}
+	</div>
+	
+	<div class="catalog-filter-main-foot">
+		<div class="catalog-filter-main-foot__pagination">
+			@@include('./templates/pagination.html')
+		</div>
+		<div class="catalog-filter-main-foot__action">
+			<button class="btn btn--line">Показать ещё</button>
+			
+			<a class="arrow-top js-anchor" href="#catalog-block">
+				<img alt="" class="svg" src="/img/ico/arrow.svg">
+			</a>
+		</div>
+	</div>
+
+</div>
+
+<div class="modal-mobile" id="modal-blog-sort">
+	<div class="modal-mobile-fade js-close-modal-mobile"></div>
+	<div class="modal-mobile-content">
+		<div class="modal-mobile__close js-close-modal-mobile">
+			<div class="cross"></div>
+		</div>
+		
+		<label class="checkbox-input"><input checked class="js-radio" name="sort" placeholder="Сначала полезные" type="radio"></label>
+		<label class="checkbox-input"><input class="js-radio" name="sort" placeholder="Сначала новые" type="radio"></label>
+		<label class="checkbox-input"><input class="js-radio" name="sort" placeholder="Сначала старые" type="radio"></label>
+	</div>
+</div>
+
+
+@@include('./templates/footer.html')
+

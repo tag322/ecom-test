@@ -1,0 +1,63 @@
+html, body, h1, h2, h3, h4, h5, h6, p, blockquote,
+a, img, dl, dt, dd, ol, ul, li, form, label,
+table, caption, tbody, tfoot, thead, tr, th, td, input, textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	vertical-align: baseline;
+	color: inherit;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea, button {
+	font-family: $F_main;
+	color: var(--FF-Black);
+}
+
+input, textare {
+	font-size: 1rem;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	transition: color .2s;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	@include hover {
+		color: var(--V2);
+	}
+}
+
+img.svg {
+	opacity: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img {
+	border: 0;
+	max-width: 100%;
+	object-position: center;
+	object-fit: cover;
+}

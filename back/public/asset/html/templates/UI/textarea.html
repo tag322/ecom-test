@@ -1,0 +1,10 @@
+<label class="input input--textarea @@class">
+	<div class="input-field">
+		<textarea @@prop name="" placeholder="@@placeholder">@@value</textarea>
+		<div class="input-label">@@label</div>
+		<div class="input-hint" style="	@@if(hint !== ''){display: block}">@@hint</div>
+	</div>
+	@@if(prop==='data-limit="1500"'){
+	<span class="input-limit"><span class="js-input-limit-num">0</span> / 1500</span>
+	}
+</label>

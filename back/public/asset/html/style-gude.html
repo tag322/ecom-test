@@ -1,0 +1,206 @@
+@@include('./templates/header.html',{title: "UI-kit"})
+
+<div class="content">
+	
+	<h1>Кит</h1>
+	
+	<h2>Info sticker small</h2>
+	
+	
+	<div class="test-product-itm-label">
+	
+		<span class="product-itm-label">
+			<img alt="" class="product-itm-label__ico svg" src="/img/ico/like.svg">
+			<span class="product-itm-label__text">рекомендуем</span>
+		</span>
+		
+		<span class="product-itm-label product-itm-label--green">
+			<span class="product-itm-label__text">новинка</span>
+		</span>
+		
+		
+		<span class="product-itm-label product-itm-label--dark">
+			<span class="product-itm-label__text">– 35%</span>
+		</span>
+		
+		<span class="product-itm-label product-itm-label--sale">
+			<img alt="" class="svg" src="./img/ico/sale.svg">
+			<span class="product-itm-label__text">Распродажа</span>
+		</span>
+		
+		<span class="product-itm-label product-itm-label--discount">
+			<img alt="" class="svg" src="./img/ico/receipt-tax.svg">
+			<span class="product-itm-label__text">уцененный</span>
+		</span>
+		
+		<span class="product-itm-label product-itm-label--promo">
+			<img alt="" class="svg" src="./img/ico/actions.svg">
+			<span class="product-itm-label__text">акция</span>
+		</span>
+		
+		<span class="product-itm-label">
+			<img alt="" class="product-itm-label__ico svg star star--full " src="/img/ico/star-half.svg">
+			<span class="product-itm-label__text">хит сезона</span>
+		</span>
+		
+		<span class="product-itm-label product-itm-label--remain">
+			<img alt="" class="product-itm-label__ico svg" src="/img/ico/sale.svg">
+			<span class="product-itm-label-content">
+				<span class="product-itm-label-content__desc">остаток:</span>
+				<span class="product-itm-label-content__name">13 упаковок</span>
+			</span>
+		</span>
+	
+	</div>
+	
+	<div class="catalog-filter-product">
+		
+		<div class="product-itm" data-num="">
+			<a aria-label="Детальная страница товара" class="product-itm__link" href="/"></a>
+			<a class="product-itm-head" href="/">
+				<div class="product-itm-images">
+					<div class="product-itm-images-stage">
+						<div class="product-itm-images__itm">
+							<img alt="" class="fill-img" loading="lazy" src="/img/tmp/banner-bg.jpg">
+						</div>
+					</div>
+				</div>
+				
+				<span class="product-itm-label product-itm-label--sale">
+							<img alt="" class="svg" src="./img/ico/sale.svg">
+							<span class="product-itm-label__text">Распродажа</span>
+						</span>
+			
+			</a>
+			<div class="product-itm-body">
+				<div class="product-itm__sku">@@sku</div>
+				<h5 class="product-itm__name">@@name</h5>
+				<div class="star-line">
+					<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+					<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+					<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+					<img alt="" class="star svg" src="/img/ico/star-half.svg">
+					<img alt="" class="star star--empty svg" src="/img/ico/star-half.svg">
+					
+					<div class="star-line__count">34</div>
+				</div>
+				<div class="product-itm__sep"></div>
+				<div class="product-itm__desc">
+					<p>вес (кг): 5.3</p>
+					<p>тип клея: однокомпонентный</p>
+					<p>назначение: для внутренних работ</p>
+					<p>время засыхания: до 60 мин.</p>
+					<p>основа клея: водно-дисперсионный</p>
+				</div>
+				
+				<div class="price-block">
+					<div class="price-block-head">
+						<span>Цена за</span>
+						<div class="price-type">
+							<div class="price-type-val active" data-type="m2">м<sup>2</sup></div>
+							<div class="price-type-val" data-type="pack">пог. метр</div>
+						</div>
+					</div>
+					<div class="price-block-val">
+						<div class="price-block-val__itm active" data-type="m2">
+							<span class="price price--old">1 590 ₽</span> <span class="price">986 ₽</span>
+						</div>
+						<div class="price-block-val__itm" data-type="pack">
+							<span class="price price--old">3 590 ₽</span> <span class="price">2 186 ₽</span>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="product-itm__btn">
+					@@include('./templates/components/add_cart_btn.html')
+					
+					<button aria-label="Сравнить" class="product-btn">
+						<img alt="" class="svg" src="/img/ico/solve.svg">
+					</button>
+					<button aria-label="В избранное" class="product-btn">
+						<img alt="" class="svg" src="/img/ico/heart.svg">
+					</button>
+				</div>
+			
+			</div>
+		</div>
+		
+		<div class="product-itm" data-num="">
+			<a aria-label="Детальная страница товара" class="product-itm__link" href="/"></a>
+			<a class="product-itm-head" href="/">
+				<div class="product-itm-images">
+					<div class="product-itm-images-stage">
+						<div class="product-itm-images__itm">
+							<img alt="" class="fill-img" loading="lazy" src="/img/tmp/banner-bg.jpg">
+						</div>
+					</div>
+				</div>
+				
+				<span class="product-itm-label product-itm-label--discount">
+							<img alt="" class="svg" src="./img/ico/receipt-tax.svg">
+							<span class="product-itm-label__text">уцененный</span>
+						</span>
+			
+			</a>
+			<div class="product-itm-body">
+				<div class="product-itm__sku">@@sku</div>
+				<h5 class="product-itm__name">@@name</h5>
+				<div class="star-line">
+					<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+					<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+					<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+					<img alt="" class="star svg" src="/img/ico/star-half.svg">
+					<img alt="" class="star star--empty svg" src="/img/ico/star-half.svg">
+					
+					<div class="star-line__count">34</div>
+				</div>
+				<div class="product-itm__sep"></div>
+				<div class="product-itm__desc">
+					<p>вес (кг): 5.3</p>
+					<p>тип клея: однокомпонентный</p>
+					<p>назначение: для внутренних работ</p>
+					<p>время засыхания: до 60 мин.</p>
+					<p>основа клея: водно-дисперсионный</p>
+				</div>
+				
+				<div class="price-block">
+					<div class="price-block-head">
+						<span>Цена за</span>
+						<div class="price-type">
+							<div class="price-type-val active" data-type="m2">м<sup>2</sup></div>
+							<div class="price-type-val" data-type="pack">пог. метр</div>
+						</div>
+					</div>
+					<div class="price-block-val">
+						<div class="price-block-val__itm active" data-type="m2">
+							<span class="price price--old">1 590 ₽</span> <span class="price">986 ₽</span>
+						</div>
+						<div class="price-block-val__itm" data-type="pack">
+							<span class="price price--old">3 590 ₽</span> <span class="price">2 186 ₽</span>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="product-itm__btn">
+					@@include('./templates/components/add_cart_btn.html')
+					
+					<button aria-label="Сравнить" class="product-btn">
+						<img alt="" class="svg" src="/img/ico/solve.svg">
+					</button>
+					<button aria-label="В избранное" class="product-btn">
+						<img alt="" class="svg" src="/img/ico/heart.svg">
+					</button>
+				</div>
+			
+			</div>
+		</div>
+	
+	</div>
+
+</div>
+
+
+@@include('./templates/footer.html')
+

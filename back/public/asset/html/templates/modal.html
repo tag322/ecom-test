@@ -1,0 +1,211 @@
+<div class="modal" id="modal-city">
+	<div class="modal-fade js-close-modal"></div>
+	<div class="modal-content">
+		<div class="modal-city-title">
+			Ваше местоположение <b>Санкт-Петербург?</b>
+		</div>
+		<div class="modal-city-btns">
+			<a class="btn btn--line js-open-modal js-close-modal" href="#modal-city-full">Нет, изменить</a>
+			<div class="btn js-close-modal">Да, спасибо</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal modal--small" id="modal-callback">
+	<div class="modal-fade js-close-modal"></div>
+	<div class="modal-content">
+		<div class="modal-close js-close-modal">
+			<div class="cross"></div>
+		</div>
+		<form action="" class="js-form-validate">
+			@@include('./UI/input.html',{label:'Имя', value: '', placeholder:' ', type:'text', hint:'', class: 'required',prop: '', name: 'width'})
+			
+			@@include('./UI/input.html',{label:'Ваш номер для связи', value: '', placeholder:' ', type:'tel', hint:'', class: 'required',prop: '', name: 'width'})
+			
+			<div class="help-support__policy required">
+				<input class="js-checkbox required" placeholder="Нажимая кнопку, я даю согласие на обработку персональных данных, в&nbsp;соответствии с Политикой конфиденциальности." type="checkbox">
+			</div>
+			
+			<button class="btn w100 js-form-validate-btn">Оставить заявку</button>
+		</form>
+	</div>
+</div>
+
+
+<div class="modal" id="modal-city-full">
+	<div class="modal-fade js-close-modal"></div>
+	<div class="modal-content">
+		<div class="modal-close js-close-modal">
+			<div class="cross"></div>
+		</div>
+		
+		<p class="h2">Выберите город</p>
+		<input type="text" name="search-city" class="search-city js-city-search" placeholder="Ваш город...">
+		
+		<ul class="modal-city-list">
+			<li>
+				<a href="">Санкт-Петербург</a>
+			</li>
+			<li>
+				<a href="">Москва, МО</a>
+			</li>
+			<li>
+				<a href="">Архангельск</a>
+			</li>
+			<li>
+				<a href="">Барнаул</a>
+			</li>
+			<li>
+				<a href="">Белгород</a>
+			</li>
+			<li>
+				<a href="">Владивосток</a>
+			</li>
+			<li>
+				<a href="">Владикавказ</a>
+			</li>
+			<li>
+				<a href="">Волгоград</a>
+			</li>
+			<li>
+				<a href="">Воронеж</a>
+			</li>
+			<li>
+				<a href="">Екатеринбург</a>
+			</li>
+			<li>
+				<a href="">Иваново</a>
+			</li>
+			<li>
+				<a href="">Ижевск</a>
+			</li>
+			<li>
+				<a href="">Иркутск</a>
+			</li>
+			<li>
+				<a href="">Казань</a>
+			</li>
+			<li>
+				<a href="">Калининград</a>
+			</li>
+			<li>
+				<a href="">Калуга</a>
+			</li>
+			<li>
+				<a href="">Кемерово</a>
+			</li>
+			<li>
+				<a href="">Киров</a>
+			</li>
+			<li>
+				<a href="">Клин</a>
+			</li>
+			<li>
+				<a href="">Кострома</a>
+			</li>
+			<li>
+				<a href="">Краснодар</a>
+			</li>
+			<li>
+				<a href="">Красноярск</a>
+			</li>
+			<li>
+				<a href="">Курск</a>
+			</li>
+			<li>
+				<a href="">Липецк</a>
+			</li>
+			<li>
+				<a href="">Набережные Челны</a>
+			</li>
+			<li>
+				<a href="">Наро-Фоминск</a>
+			</li>
+			<li>
+				<a href="">Нижний Новогород</a>
+			</li>
+			<li>
+				<a href="">Новокузнецк</a>
+			</li>
+			<li>
+				<a href="">Новороссийск</a>
+			</li>
+			<li>
+				<a href="">Новосибирск</a>
+			</li>
+			<li>
+				<a href="">Омск</a>
+			</li>
+			<li>
+				<a href="">Оренбург</a>
+			</li>
+			<li>
+				<a href="">Пенза</a>
+			</li>
+			<li>
+				<a href="">Пермь</a>
+			</li>
+			<li>
+				<a href="">Петрозаводск</a>
+			</li>
+			<li>
+				<a href="">Псков</a>
+			</li>
+			<li>
+				<a href="">Ростов-на-Дону</a>
+			</li>
+			<li>
+				<a href="">Рязань</a>
+			</li>
+			<li>
+				<a href="">Самара</a>
+			</li>
+			<li>
+				<a href="">Саранск</a>
+			</li>
+			<li>
+				<a href="">Саратов</a>
+			</li>
+			<li>
+				<a href="">Смоленск</a>
+			</li>
+			<li>
+				<a href="">Ставрополь</a>
+			</li>
+			<li>
+				<a href="">Сургут</a>
+			</li>
+			<li>
+				<a href="">Тверь</a>
+			</li>
+			<li>
+				<a href="">Тольятти</a>
+			</li>
+			<li>
+				<a href="">Тула</a>
+			</li>
+			<li>
+				<a href="">Тюмень</a>
+			</li>
+			<li>
+				<a href="">Ульяновск</a>
+			</li>
+			<li>
+				<a href="">Уфа</a>
+			</li>
+			<li>
+				<a href="">Хабаровск</a>
+			</li>
+			<li>
+				<a href="">Челябинск</a>
+			</li>
+			<li>
+				<a href="">Череповец</a>
+			</li>
+			<li>
+				<a href="">Ярославль</a>
+			</li>
+		</ul>
+		
+	</div>
+</div>

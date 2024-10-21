@@ -1,0 +1,71 @@
+@use "sass:math";
+
+
+// $property - свойство
+// $expression - значение
+@mixin calc($property, $expression) {
+	#{$property}: -moz-calc(#{$expression});
+	#{$property}: -webkit-calc(#{$expression});
+	#{$property}: calc(#{$expression});
+}
+
+
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+		@content
+	}
+	&:-moz-placeholder {
+		@content
+	}
+	&::-moz-placeholder {
+		@content
+	}
+	&:-ms-input-placeholder {
+		@content
+	}
+}
+
+@mixin fill($p:0) {
+	position: absolute;
+	left: $p;
+	top: $p;
+	right: $p;
+	bottom: $p;
+}
+
+@mixin col-padding($val) {
+	margin-left: -$val;
+	@include calc('width', '100% + '+($val*2));
+
+	.col {
+		padding: $val;
+	}
+}
+
+@mixin pos-center() {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+@function toRem($value) {
+	$remValue: math.div($value, 16) + rem;
+	@return $remValue;
+}
+
+@mixin hover {
+	@media screen and (min-width: 799px) {
+		&:hover {
+			@content;
+		}
+	}
+}
+
+
+@mixin line-clump($num) {
+	display: -webkit-box;
+	-webkit-line-clamp: $num;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}

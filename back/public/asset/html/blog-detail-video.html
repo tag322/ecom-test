@@ -1,0 +1,98 @@
+@@include('./templates/header.html', {title: "Блог - детальная (видео)"})
+
+<div class="content">
+	
+	<div class="breadcrumb-with-title">
+		@@include('./templates/components/breadcrumb.html')
+		
+		<h1 class="h2">Инженерный кварц-винил, или виниловый ламинат: что такое SPC и где его применять</h1>
+	</div>
+	
+	<div class="blog-info-line">
+		
+		<div class="blog-info-line__itm">
+			<img alt=" " class="blog-info-line__itm__ico svg" src="/img/ico/date-small.svg">
+			<div class="blog-info-line__itm__name">Дата публикации: <b>10.10.2023</b></div>
+		</div>
+		
+		<div class="blog-info-line__itm">
+			<img alt=" " class="blog-info-line__itm__ico svg" src="/img/ico/refresh.svg">
+			<div class="blog-info-line__itm__name">Дата обновления: <b>06.12.2023</b></div>
+		</div>
+		
+		<div class="blog-info-line__itm">
+			<img alt=" " class="blog-info-line__itm__ico svg" src="/img/ico/time.svg">
+			<div class="blog-info-line__itm__name">Время чтения: <b>10 минут</b></div>
+		</div>
+		
+		<div class="blog-info-line__itm">
+			<img alt=" " class="blog-info-line__itm__ico svg" src="/img/ico/eye.svg">
+			<div class="blog-info-line__itm__name">Просмотрено: <b>604</b></div>
+		</div>
+	
+	</div>
+	
+	<div class="blog-author-line">
+		
+		<div class="blog-author">
+			<div class="blog-author__ava">
+				<img alt="" class="fill-img" src="/img/tmp/person.jpg">
+			</div>
+			<div class="blog-author__body">
+				<div class="blog-author__name">Алексей Пышницкий</div>
+				<div class="blog-author__desc">Технический специалист FineFloor Group</div>
+			</div>
+		</div>
+		
+		<div class="blog-author-line__text">Знает всё о напольных покрытиях. Эксперт в кварц-виниле и ламинате. Может произвести монтаж даже с закрытыми глазами – на предварительно подготовленное основание!</div>
+	
+	</div>
+	
+	<div class="blog-main blog-main--video">
+		
+		<div class="help-faq-body text-format blog-content">
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen frameborder="0" src="https://www.youtube.com/embed/wNKu4g580iI?si=kprl1905_wId5moC" title="YouTube video player"></iframe>
+			
+			<p>Есть покупатели, которые считают, что ламинат вредит здоровью.</p>
+			<p>Например, существует миф, что он выделяет формальдегид — едкий и опасный газ, который при длительном воздействии провоцирует развитие заболеваний дыхательной системы.</p>
+			<p>На самом деле ламинат не выделяет формальдегид. Это такое же безопасное покрытие, как натуральная древесина.</p>
+			<p>В этом видео мы это докажем..</p>
+		</div>
+		
+		<div class="blog-content-share">
+			<div class="share-block">
+				<div class="share-block-link__list">
+					<script src="https://yastatic.net/share2/share.js"></script>
+					<div class="ya-share2" data-curtain data-limit="0" data-more-button-type="short" data-services="vkontakte,telegram,whatsapp"></div>
+				</div>
+				<div class="share-block-link">
+					<img alt="" class="svg" src="./img/ico/share.svg">
+					<span>Поделиться</span>
+				</div>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="blog-relative">
+		<h3 class="title-normal">Товары из видео</h3>
+		
+		<div class="product-slider">
+			@@for(i=0;i<3;i++){
+			
+			@@include('./templates/components/product.html',{sku:"Арт. GO4CORK OPTIMAL 1000",name:"Go4Cork OPTIMAL",desc:"short", head_type: "v1"})
+			
+			@@include('./templates/components/product.html',{sku:"Арт. GO4CORK OPTIMAL 1000",name:"Go4Cork OPTIMAL пробковая подложка",desc:"", head_type: "v2"})
+			
+			@@include('./templates/components/product.html',{sku:"Арт. 169000000000001170",name:"ARBITON LM60 заглушка правая для плинтуса 77 Песчаный дуб",desc:"", head_type: "v3"})
+			
+			}
+		</div>
+	</div>
+
+</div>
+
+
+@@include('./templates/footer.html')
+

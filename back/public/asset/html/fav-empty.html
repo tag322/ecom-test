@@ -1,0 +1,24 @@
+@@include('./templates/header.html',{title: "Избранное (Пустая)"})
+
+
+<div class="content js-view-parent" id="page-fav">
+	
+	<div class="breadcrumb-with-title">
+		@@include('./templates/components/breadcrumb.html')
+		
+		<h1 class="h2 title-small">Избранное</h1>
+	</div>
+	
+	<div class="fav-empty">
+		<img alt="" class="fav-empty__img" src="/img/ico/stas/stas-basket.svg">
+		<p class="h2 fav-empty__title">В избранном пока нет товаров</p>
+		<div class="fav-empty__desc">Жмите на сердечко в карточке понравившегося товара.<br/>
+			Тогда он появится на этой странице, если цена измениться – мы вам сообщим.</div>
+		<a href="/catalog.html" class="btn">Перейти в каталог</a>
+	</div>
+
+
+</div>
+
+
+@@include('./templates/footer.html')

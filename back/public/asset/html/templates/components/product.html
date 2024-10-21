@@ -1,0 +1,159 @@
+<div class="product-itm @@class" data-num="@@num">
+	<a aria-label="Детальная страница товара" class="product-itm__link" href="/"></a>
+	<a class="product-itm-head" href="/">
+		<div class="product-itm-images">
+			<div class="product-itm-images-stage">
+				@@if(head_type==="v1"){
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="/img/tmp/product.jpg">
+				</div>
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="https://dummyimage.com/400x400">
+				</div>
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="/img/tmp/banner-bg.jpg">
+				</div>
+				} @@if(head_type==="v2"){
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="/img/tmp/banner-bg.jpg">
+				</div>
+				} @@if(head_type==="v3"){
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="/img/tmp/cat.jpg">
+				</div>
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="/img/tmp/decor-preview.jpg">
+				</div>
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="/img/tmp/cat.jpg">
+				</div>
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="/img/tmp/decor-preview.jpg">
+				</div>
+				<div class="product-itm-images__itm">
+					<img alt="" class="fill-img" loading="lazy" src="/img/tmp/product.jpg">
+				</div>
+				}
+			</div>
+		</div>
+		@@if(head_type==="v1"){
+		
+		<span class="product-itm-label">
+			<img alt="" class="product-itm-label__ico svg" src="/img/ico/like.svg">
+			<span class="product-itm-label__text">рекомендуем</span>
+		</span>
+		
+		}
+		
+		@@if(head_type==="v2"){
+		
+		<span class="product-itm-label product-itm-label--green">
+			<span class="product-itm-label__text">новинка</span>
+		</span>
+		
+		}
+		
+		@@if(head_type==="v3"){
+		
+		<span class="product-itm-label product-itm-label--dark">
+			<span class="product-itm-label__text">– 35%</span>
+		</span>
+		
+		}
+	</a>
+	<div class="product-itm-body">
+		<div class="product-itm__sku">@@sku</div>
+		<h5 class="product-itm__name">@@name</h5>
+		<div class="star-line">
+			<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+			<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+			<img alt="" class="star star--full svg" src="/img/ico/star-half.svg">
+			<img alt="" class="star svg" src="/img/ico/star-half.svg">
+			<img alt="" class="star star--empty svg" src="/img/ico/star-half.svg">
+			
+			<div class="star-line__count">34</div>
+		</div>
+		<div class="product-itm__sep"></div>
+		<div class="product-itm__desc">
+			@@if(desc==="short"){
+			<p>вес (кг): 5.3</p>
+			} @@if(desc!=="short"){
+			<p>вес (кг): 5.3</p>
+			<p>тип клея: однокомпонентный</p>
+			<p>назначение: для внутренних работ</p>
+			<p>время засыхания: до 60 мин.</p>
+			<p>основа клея: водно-дисперсионный</p>
+			}
+		</div>
+		
+		@@if(head_type==="v1"){
+		<div class="price-block">
+			<div class="price-block-head">
+				<span>Цена за</span>
+				<div class="price-type">
+					<div class="price-type-val active" data-type="m2">м<sup>2</sup></div>
+					<div class="price-type-val" data-type="pack">уп.</div>
+				</div>
+			</div>
+			<div class="price-block-val">
+				<div class="price-block-val__itm active" data-type="m2">
+					<span class="price price--old">1 590 ₽</span> <span class="price">986 ₽</span>
+				</div>
+				<div class="price-block-val__itm" data-type="pack">
+					<span class="price price--old">3 590 ₽</span> <span class="price">2 186 ₽</span>
+				</div>
+			</div>
+		</div>
+		}
+		
+		
+		@@if(head_type==="v2"){
+		<div class="price-block">
+			<div class="price-block-head">
+				<span>Цена за</span>
+				<div class="price-type">
+					<div class="price-type-val active" data-type="pack">шт.</div>
+				</div>
+			</div>
+			<div class="price-block-val">
+				<div class="price-block-val__itm active" data-type="m2">
+					<span class="price">986 ₽</span>
+				</div>
+			</div>
+		</div>
+		}
+		
+		@@if(head_type==="v3"){
+		<div class="price-block">
+			<div class="price-block-head">
+				<span>Цена за</span>
+				<div class="price-type">
+					<div class="price-type-val active" data-type="m2">м<sup>2</sup></div>
+					<div class="price-type-val" data-type="pack">пог. метр</div>
+				</div>
+			</div>
+			<div class="price-block-val">
+				<div class="price-block-val__itm active" data-type="m2">
+					<span class="price price--old">1 590 ₽</span> <span class="price">986 ₽</span>
+				</div>
+				<div class="price-block-val__itm" data-type="pack">
+					<span class="price price--old">3 590 ₽</span> <span class="price">2 186 ₽</span>
+				</div>
+			</div>
+		</div>
+		}
+		
+		
+		<div class="product-itm__btn">
+			@@include('./add_cart_btn.html')
+			
+			<button aria-label="Сравнить" class="product-btn">
+				<img alt="" class="svg" src="/img/ico/solve.svg">
+			</button>
+			<button aria-label="В избранное" class="product-btn">
+				<img alt="" class="svg" src="/img/ico/heart.svg">
+			</button>
+		</div>
+	
+	</div>
+</div>
