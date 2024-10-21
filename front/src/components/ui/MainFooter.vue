@@ -1,0 +1,113 @@
+<template>
+        <footer class="footer">
+            <div class="content">
+                <div class="footer-grid">
+
+                    <div class="footer-col">
+                        <h5 class="footer-col__title">Быстрая доставка</h5>
+                        <ul>
+                            <li>
+                                <a class="footer-list-itm" href="/">Каталог</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Услуги</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Доставка и самовывоз</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Возврат товара</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Поддержка</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Вопросы</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5 class="footer-col__title">Компания</h5>
+                        <ul>
+                            <li>
+                                <a class="footer-list-itm" href="/">О нас</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Контакты</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Техинфо</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Документы</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Блог</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5 class="footer-col__title">Товары</h5>
+                        <ul>
+                            <li>
+                                <a class="footer-list-itm" href="/">Акции и распродажи</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Новинки</a>
+                            </li>
+                            <li>
+                                <a class="footer-list-itm" href="/">Популярные товары</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5 class="footer-col__title">Соцсети</h5>
+                        <ul class="footer-soc">
+                            <li>
+                                <a href="/" target="_blank">
+                                    <img alt="" class="svg" src="../../img/ico/soc/Youtube.svg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" target="_blank">
+                                    <img alt="" class="svg" src="../../img/ico/soc/VK.svg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" target="_blank">
+                                    <img alt="" class="svg" src="../../img/ico/soc/dzen.svg">
+                                </a>
+                            </li>
+                        </ul>
+
+                        <h5 class="footer-col__title">Всегда на связи</h5>
+                        <ul class="footer-soc">
+                            <li>
+                                <a href="/" target="_blank">
+                                    <img alt="" class="svg" src="../../img/ico/soc/tel.svg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" target="_blank">
+                                    <img alt="" class="svg" src="../../img/ico/soc/whatsup.svg">
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+</template>
+
+<script>
+
+</script>
+
+<style>
+
+</style>
