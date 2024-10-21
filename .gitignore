@@ -21,7 +21,7 @@ front/*.njsproj
 front/*.sln
 front/*.sw?
 
-tmp
+tmp/
 
 
 
