@@ -9,6 +9,8 @@ use App\Models\Order;
 use App\Models\BasketPayload;
 use App\Events\OrderCreated;
 
+use Illuminate\Support\Facades\Log;
+
 class BasketController extends Controller
 {
 
@@ -27,16 +29,25 @@ class BasketController extends Controller
             $basket = Basket::firstOrCreate(
                 ['user_id' => $user_id]
             );
+            Log::info($basket);
         } else {
             $basket = Basket::firstOrCreate(
                 ['session_id' => $req->session()->getId()]
             );
+            Log::info($basket);
         }
            
-        $basket = $basket->with('products_payload.payload.parent_product')->first();
+        $basket = Basket::where('id', $basket->id)->with('products_payload.payload.parent_product')->first();
+        Log::info($basket);
+
+
+        Log::info([strval($basket->id), strval($req->product_id)]);
+
 
         $basket_payload = BasketPayload::updateOrCreate(['basket_id' => $basket->id, 'product_id' => $req->product_id],
         ['quantity' => $req->quantity]);
+
+
 
         return $basket_payload;
 

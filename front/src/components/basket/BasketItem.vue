@@ -3,7 +3,10 @@
 
 <div class="basket-itm">
     <div class="basket-itm__check">
-        <input :checked="selectedItems.includes(product.product_id)" class="js-checkbox" placeholder="" type="checkbox" :value="product.product_id" @change="suka">
+        <label class="check_box">
+            <input :checked="selectedItems.includes(product.product_id)" class="js-checkbox" placeholder type="checkbox" :value="product.product_id" @change="suka">
+            <span class="check_box__item"></span>
+        </label>    
     </div>
     <div class="basket-itm__img">
         <img alt="" class="fill-img" src="../../img/tmp/decor-small.jpg">

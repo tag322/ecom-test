@@ -190,8 +190,19 @@ export default {
                 
                 
                 
+                var basket = JSON.parse(localStorage.getItem('basket'))
+                var InCartIndex = basket.products_payload.findIndex((el) => el.product_id == this.selected_variant)
+                if(InCartIndex != -1) {
+                    console.log(InCartIndex)
+                    basket.products_payload[InCartIndex].quantity = Number(quantity)
+                } else {
+                    basket.products_payload.push({'product_id': this.selected_variant, 'quantity': Number(quantity)})
+                }
+
+                localStorage.setItem('basket', JSON.stringify(basket))
+
+                store.state.cart.products_payload.push(response.data)
                 
-                // store.state.cart.products_payload = response.data.products_payloa
                          
                 
 

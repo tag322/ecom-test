@@ -134,7 +134,7 @@
 
                     <a aria-label="Корзина" class="header-btns__btn" href="/cart">
                         <img alt="" class="svg" src="../../img/ico/basket-full.svg">
-                        <span v-if="Object.keys($store.state.cart).length != 0" class="header-btns__pin">{{Object.keys($store.state.cart.products_payload).length}}</span>
+                        <span v-if="$store.state.cart.products_payload != undefined && $store.state.cart.products_payload.length > 0" class="header-btns__pin">{{Object.keys($store.state.cart.products_payload).length}}</span>
                     </a>
                     
                 </div>

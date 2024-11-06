@@ -8,9 +8,9 @@
         <form action="" class="basket-grid">
             <div class="basket-grid-content" >
                 <div class="basket-head" v-if="basket != null">
-                    <input class="js-checkbox js-basket-select-all" placeholder="Выбрать всё" type="checkbox">
+                    <input class="js-checkbox js-basket-select-all" placeholder="Выбрать всё" type="checkbox" :checked="selectedItems.length === basket.products_payload.length && selectedItems.length > 0" @click="selectAllSwitch">
 
-                    <a  class="btn btn--line disabled js-open-modal js-basket-remove-all-btn" href="#modal-basket-remove">Удалить выбранное</a>
+                    <a  :class="{'btn btn--line js-open-modal js-basket-remove-all-btn': true, 'disabled': selectedItems.length == 0}" href="#modal-basket-remove">Удалить выбранное</a>
 
                     <!-- {{selectedItems}} -->
 
@@ -143,7 +143,7 @@ export default {
                 totalPrice: 0,
                 itemsCount: 0
             },
-            basket: {},
+            basket: {'products_payload': []},
 
             message: '',
             requestPending: false,
@@ -326,21 +326,41 @@ export default {
 
         },
 
-
         test(data) {
             console.log(process.env.VUE_APP_BACKEND_URL)
+        },
+
+        selectAllSwitch() {
+            if(this.selectedItems.length != this.basket.products_payload.length) {
+                var aboba = document.getElementsByClassName('check_box')
+                Array.prototype.forEach.call(aboba, (el) => {
+                    var i = el.querySelectorAll("[class='js-checkbox']")[0]
+                    if (i != undefined && this.selectedItems.indexOf(Number(i.getAttribute('value'))) == -1) {
+                        this.selectedItems.push(Number(i.getAttribute('value')))
+                    }
+                });
+            } else {
+                this.selectedItems = []
+            }
+            console.log(this.selectedItems)
         }
     },
     created() {
 
-        this.parseBasket(),
         
-        this.calcSum()
+
+        
         
         window.addEventListener("beforeunload", this.preventLeave); 
     },
     watch: {
         basket() {
+
+        },
+
+        '$store.state.cart': function() {
+            this.parseBasket(),
+            this.calcSum()
         }
     }
 }
