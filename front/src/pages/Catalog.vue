@@ -2055,7 +2055,7 @@ export default {
                 }
             })
 
-            console.log(this.products)
+            // console.log(this.products)
             
         },
         async fetchCats() {

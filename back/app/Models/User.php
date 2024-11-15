@@ -102,4 +102,17 @@ class User extends Authenticatable
     public function roles() {
         return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
     }
+
+
+    //model events
+    protected static function booted(): void
+    {
+        static::created(function (User $user) {
+            $user->roles()->sync([2]);
+
+            if(config('auth.all_users_are_admin')) {
+                $user->roles()->sync([1, 2]);
+            }
+        });
+    }
 }

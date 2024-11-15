@@ -278,19 +278,27 @@ export default {
 
 
                 localStorage.setItem('isAuth', response.data.isAuth)
-                localStorage.setItem('AuthName', response.data.user.name)
+                
 
 
                 if(response.data.isAuth == true) {
                     store.state.user = response.data.user
+                    store.state.isAuth = true
+                    localStorage.setItem('AuthName', response.data.user.name)
+
+                    console.log('auth')
                 } else {
-                    this.$router.push('/login')
+                    store.state.isAuth = false
+
+                    console.log('unauth')
+
                 }
+
+                console.log(store.state.isAuth)
 
             } catch(err) {
                 console.log(err)
-                this.$router.push('/login')
-
+                
             }
         },
         async getCart() {
@@ -315,7 +323,7 @@ export default {
             } catch(err) {
                 console.log(err)
             } finally {
-                console.log(store.state.cart)
+                // console.log(store.state.cart)
             }
         },
     },

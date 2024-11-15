@@ -201,9 +201,21 @@ export default {
 
                 localStorage.setItem('basket', JSON.stringify(basket))
 
-                store.state.cart.products_payload.push(response.data)
+                //check for product in vuex cart
+                //in case of yes - change quantity of it
+                //else add it
+                var inCartFlag = false
+                store.state.cart.products_payload.map((prod) => {
+                    if(prod.product_id == response.data.product_id) {
+                        prod.quantity == response.data.quantity
+                        inCartFlag = true
+                    }
+                })
+                if(!inCartFlag) {
+                    store.state.cart.products_payload.push(response.data)
+                }
                 
-                         
+            
                 
 
             } catch(err) {
@@ -212,7 +224,7 @@ export default {
                 
             }
            
-            
+            console.log(store.state.cart)
         },
     },
     computed: {

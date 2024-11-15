@@ -1163,7 +1163,11 @@ export default {
         }
     },
     watch: {
-
+        '$store.state.isAuth': function() {
+            if(store.state.isAuth == false) {
+                this.$router.push('/login')
+            }
+        }
     }
 }
 </script>
