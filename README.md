@@ -4,6 +4,7 @@ spa test
 
 1. `git clone https://github.com/tag322/ecom-test.git`\
 `cd back; composer install`\
+`cd back; php artisan migrate --seed`\
 `cd front; npm install` 
 
 ### Enviroment vars
