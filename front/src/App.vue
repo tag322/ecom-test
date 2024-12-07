@@ -319,6 +319,8 @@ export default {
                 }
                 if(response.data) {
                     localStorage.setItem('basket', JSON.stringify(response.data))                
+                } else {
+                    localStorage.setItem('basket', '')
                 }
             } catch(err) {
                 console.log(err)

@@ -187,13 +187,26 @@ export default {
                     }, 1000)
                 })
 
+                store.state.cart = response.data
                 
+                var basket = localStorage.getItem('basket')
+
+                if(!basket) {
+                    basket = ''
+                } else {
+                    basket = JSON.parse(basket)
+                }
+
                 
-                
-                var basket = JSON.parse(localStorage.getItem('basket'))
-                var InCartIndex = basket.products_payload.findIndex((el) => el.product_id == this.selected_variant)
+                if(basket) {
+                    var InCartIndex = basket.products_payload.findIndex((el) => el.product_id == this.selected_variant)
+                } else {
+                    var InCartIndex = response.data.products_payload.findIndex((el) => el.product_id == this.selected_variant)
+                    basket = response.data
+                    return //we passed current basket state
+                }
+
                 if(InCartIndex != -1) {
-                    console.log(InCartIndex)
                     basket.products_payload[InCartIndex].quantity = Number(quantity)
                 } else {
                     basket.products_payload.push({'product_id': this.selected_variant, 'quantity': Number(quantity)})
@@ -204,16 +217,19 @@ export default {
                 //check for product in vuex cart
                 //in case of yes - change quantity of it
                 //else add it
-                var inCartFlag = false
-                store.state.cart.products_payload.map((prod) => {
-                    if(prod.product_id == response.data.product_id) {
-                        prod.quantity == response.data.quantity
-                        inCartFlag = true
-                    }
-                })
-                if(!inCartFlag) {
-                    store.state.cart.products_payload.push(response.data)
-                }
+
+                //хз нахуя я это писал
+
+                // var inCartFlag = false
+                // store.state.cart.products_payload.map((prod) => {
+                //     if(prod.product_id == response.data.product_id) {
+                //         prod.quantity == response.data.quantity
+                //         inCartFlag = true
+                //     }
+                // })
+                // if(!inCartFlag) {
+                //     store.state.cart.products_payload.push(response.data)
+                // }
                 
             
                 
