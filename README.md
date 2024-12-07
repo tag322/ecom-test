@@ -1,28 +1,27 @@
-spa test 
 
-# Installation
+# Установка
 
 1. `git clone https://github.com/tag322/ecom-test.git`\
 `cd back; composer install`\
-`cd back; php artisan migrate --seed`\
 `cd front; npm install` 
 
-### Enviroment vars
+### Окружение
 
-2. create new `.env` in both `/back` and `/front` directories
-3. copy contents of `.env.example`'s that also in `/front and /back` and paste this to new files respectively
-4. execute `cd back; php artisan key:generate`
-5. fill in blank sensitive enviroment variables, there's a lot of them, unfortunately. Not all of them necessary for the basic functionality of app.
+2. создайте в файлы `.env` в директориях `/back` и `/front`
+3. скопирйте содержимое из `.env.example` в директориях `/front и /back` и вставьте в новые файлы соответственно 
+4. запустите `cd back; php artisan key:generate`
+5. заполните чувстительные данные в `.env` файлах
 
-# How to run
+# Запуск
 
 `docker compose up`
 
-### Or
+### или
 
 `cd back; php artisan serve`\
 `cd front; npm run serve`
-###### and optional
+
+###### и опционально под разный функционал
 `cd back; php artisan queue:work`\
 `cd back; php artisan reverb:start`\
 `cd back; php artisan schedule:work`

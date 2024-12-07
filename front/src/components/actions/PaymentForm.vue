@@ -3,7 +3,7 @@
         <span class="h4">Оплата</span>
         <form action="" mathod="POST" @submit.prevent="submit(); $emit('makeorder')" >
             <label for="amount">Сумма платежа</label>
-            <input name="amount" type="text" required autocomplete="off" :value="amount" readonly></input>
+            <input name="amount" type="text" required autocomplete="off" :value="amount + ' ₽'" readonly></input>
             <label for="email">Ваш email для уведомлений {{isAuth ? '(по умолчанию используется тот, который вы указали при регистрации)' : ''}}</label>
             <input name="email" type="text" required autocomplete="off" v-model="email"></input>
             <!-- <label for="description">Описание</label>

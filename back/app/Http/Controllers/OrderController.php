@@ -64,7 +64,7 @@ class OrderController extends Controller
             abort('403', 'нахуй пошёл');
         }
 
-        DB::table('orders')->whereIn('id', $req->ids)->delete();
+        Order::whereIn('id', $req->ids)->delete();
 
         return response()->json('success', 200);
     }

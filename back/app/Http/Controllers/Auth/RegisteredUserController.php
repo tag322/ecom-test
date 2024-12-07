@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
+use Illuminate\Support\Facades\Log;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -23,7 +25,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'], //Rules\Password::defaults(), min:8 deleted
         ]);
 
         $user = User::create([
@@ -34,12 +36,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        /** 
-         *  1 admin
-         *  2 user 
-         */
 
-        $user->roles()->sync([2]);
 
         // $user->createToken('permission-token', ['check-orders']);
 

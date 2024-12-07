@@ -30,7 +30,7 @@
             <div class="basket-total-card">
                 <div class="basket-total-card__title h2">
                     <div>Итого:</div>
-                    <div>{{cartInfo.totalPrice}}</div>
+                    <div>{{cartInfo.totalPrice}} ₽</div>
                     
                 </div>
                 <div class="basket-total-attr">
@@ -265,8 +265,9 @@ export default {
             this.selectedItems = []
 
 
-            store.state.cart_items_count = this.basket.products_payload.length
+            store.state.cart_items_count = this.basket.products_payload.length //probably unused
 
+            store.state.cart = this.basket
         },
 
         calcSum() {

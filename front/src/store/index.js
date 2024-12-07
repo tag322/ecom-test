@@ -6,6 +6,8 @@ export default createStore({
 
   
   state: {
+    isAuth: null,
+
     message: '',
 
     cart_items_count: 0,

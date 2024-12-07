@@ -112,4 +112,5 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    'all_users_are_admin' => env('AUTH_REGISTER_USERS_AS_ADMIN', false),
 ];

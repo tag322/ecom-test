@@ -51,7 +51,7 @@ class PaymentController extends Controller
 
         $source = file_get_contents('php://input');
 
-        
+        // Log::info($source);
 
         $requestBody = json_decode($source, true);  
 

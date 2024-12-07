@@ -2021,11 +2021,19 @@ export default {
                     //...(this.filterArr['price'] != undefined && {price: this.filterArr['price'].join('-')}),
                     //...(this.filterArr['category'] != undefined && {category: this.filterArr['category'].join('-')})
                 }})
+
+                
+
                 response.data.forEach((el) => {
                     el['inBasketInfo'] = []
                 })
+
+                
+
                 this.products = response.data
                 
+                
+
             } catch(err) {
                 alert(err)
             } finally {
@@ -2035,14 +2043,30 @@ export default {
             }
         },
         checkBasketPresence() {
-            const basket = JSON.parse(localStorage.getItem('basket')).products_payload
+            var basket = localStorage.getItem('basket')
+
+            if(!basket) {
+                return
+            }
+
+            var basket = JSON.parse(basket).products_payload
+
+            
 
             this.products.forEach((prod, index) => {
+
+                
 
                 const basketInfoAcc = []
                 const prodVariantsIds = prod.variants.map(i => i['id'])
 
+                
+
+
                 basket.forEach((el) => {
+
+                    
+
                     if(prodVariantsIds.includes(el.product_id)) {
                         basketInfoAcc.push({'quantity': el.quantity, 'variant_id': el.product_id})
                     }
@@ -2055,7 +2079,7 @@ export default {
                 }
             })
 
-            console.log(this.products)
+            // console.log(this.products)
             
         },
         async fetchCats() {
@@ -2324,8 +2348,12 @@ export default {
     async mounted() {
         this.form_filterstring(),
 
-        await Promise.all([this.fetchData(), this.fetchCats(), this.get_cat_attrs()])
+        await Promise.all([this.fetchData(), this.fetchCats(), this.get_cat_attrs()]),
+
         this.checkBasketPresence()
+    },
+    created() {
+        
     },
     watch: {
         filterstring() {

@@ -23,93 +23,39 @@ class BasketController extends Controller
          * 
          */
 
-        $user_id = $req->user()->id;
+        $user = $req->user();
 
-        if(isset($user_id)) {
+        if(isset($user)) {
+            $user_id = $user->id;
+
             $basket = Basket::firstOrCreate(
                 ['user_id' => $user_id]
             );
-            Log::info($basket);
+            
         } else {
             $basket = Basket::firstOrCreate(
                 ['session_id' => $req->session()->getId()]
             );
-            Log::info($basket);
+            
         }
            
         $basket = Basket::where('id', $basket->id)->with('products_payload.payload.parent_product')->first();
-        Log::info($basket);
+        $basket_payload = BasketPayload::updateOrCreate(['basket_id' => $basket->id, 'product_id' => $req->product_id], ['quantity' => $req->quantity]);
 
+        $found = false;
+        foreach($basket->products_payload as $key => $product) {
+            if($product->product_id == $req->product_id) {
+                $found = $key;
+            }
+        }
 
-        Log::info([strval($basket->id), strval($req->product_id)]);
+        if(gettype($found) === "integer") {
+            $basket->products_payload[$found]->quantity = $req->quantity;
+        } else {
+            $basket->products_payload->push($basket_payload);
+        }
 
-
-        $basket_payload = BasketPayload::updateOrCreate(['basket_id' => $basket->id, 'product_id' => $req->product_id],
-        ['quantity' => $req->quantity]);
-
-
-
-        return $basket_payload;
-
-        //check if user already have this product in cart
-        // $basket_payload = BasketPayload::where('basket_id', $basket->id)->where('product_id', $req->product_id)->first();
-        // if($basket_payload) {
-        //     $basket_payload->quantity = $req->quantity;
-        //     $basket_payload->save();          
-        // } else { //else creating it
-        //     $basket_payload = BasketPayload::create([
-        //         'basket_id' => $basket->id,
-        //         'product_id' => $req->product_id,
-        //         'quantity' => $req->quantity,
-        //     ]);
-        //     $basket->products_payload->push($basket_payload);
-        // }
-
-        // return $basket;
-
-        // $isAuth = false;
-        // $user_id = 0;
-        // $session_id = '';
-        
-        // if ($req->user('sanctum')) {
-        //     $isAuth = true;
-        //     $user_id = $req->user('sanctum')->id;
-        // } else {
-        //     $session_id = $req->session()->getId();
-        // }
-
-        // // creating basket in db if its not created
-        // $basket = Basket::where('user_id', $user_id)->orWhere('session_id', $session_id)->with('products_payload.payload.parent_product')->first();
-        // if($basket == null) {
-        //     if($isAuth) {
-        //         $basket = Basket::create([
-        //             'user_id' => $user_id,
-        //         ]);
-        //     } else {
-        //         $basket = Basket::create([
-        //             'session_id' => $session_id,
-        //         ]);
-        //     } 
-        // }
-
-
-
-        // //check if user already have this product in cart
-        // $basket_payload = BasketPayload::where('basket_id', $basket->id)->where('product_id', $req->product_id)->first();
-        // if($basket_payload) {
-        //     $basket_payload->quantity = $req->quantity;
-        //     $basket_payload->save();          
-        // } else { //else creating it
-        //     $basket_payload = BasketPayload::create([
-        //         'basket_id' => $basket->id,
-        //         'product_id' => $req->product_id,
-        //         'quantity' => $req->quantity,
-        //     ]);
-        //     $basket->products_payload->push($basket_payload);
-        // }
-
-        // return $basket;
-        //return response(null, 204);
+        return $basket;
     }
 
     public function deleteFromCart(Request $req) {
