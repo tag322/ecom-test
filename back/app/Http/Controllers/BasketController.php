@@ -40,7 +40,16 @@ class BasketController extends Controller
         }
            
         $basket = Basket::where('id', $basket->id)->with('products_payload.payload.parent_product')->first();
-        $basket_payload = BasketPayload::updateOrCreate(['basket_id' => $basket->id, 'product_id' => $req->product_id], ['quantity' => $req->quantity]);
+
+        if($req->quantity == 0) {
+            BasketPayload::where([
+                ['basket_id', '=', $basket->id],
+                ['product_id', '=', $req->product_id],     
+            ])->delete();
+        } else {
+            $basket_payload = BasketPayload::updateOrCreate(['basket_id' => $basket->id, 'product_id' => $req->product_id], ['quantity' => $req->quantity]);
+        }
+
 
         $found = false;
         foreach($basket->products_payload as $key => $product) {
@@ -49,7 +58,16 @@ class BasketController extends Controller
             }
         }
 
+        Log::info(json_encode($basket));
+
         if(gettype($found) === "integer") {
+            if($req->quantity == 0) {
+                unset($basket->products_payload[$found]);
+
+                Log::info(json_encode($basket->products_payload));
+
+                return $basket; 
+            }
             $basket->products_payload[$found]->quantity = $req->quantity;
         } else {
             $basket->products_payload->push($basket_payload);
