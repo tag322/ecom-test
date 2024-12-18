@@ -58,13 +58,9 @@ class BasketController extends Controller
             }
         }
 
-        Log::info(json_encode($basket));
-
         if(gettype($found) === "integer") {
             if($req->quantity == 0) {
                 unset($basket->products_payload[$found]);
-
-                Log::info(json_encode($basket->products_payload));
 
                 return $basket; 
             }
