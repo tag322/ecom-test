@@ -9,6 +9,10 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Brand;
 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Cache;
+
 class CategoriesApiController extends Controller
 {
     /**
@@ -127,11 +131,21 @@ class CategoriesApiController extends Controller
     }
 
     public function product_counter($id) {
+
+        $cache = Cache::get('category-counter-all');
+
+        if($cache) {
+            return $cache; 
+        }
+
         $ids = explode('-', $id);
         $counts = [];
         foreach($ids as $i) {
             array_push($counts, Product::query()->where('category_id', $i)->count());
         }
+
+        Cache::set('category-counter-all', json_encode($counts), $seconds = 300);
+
         return $counts;
     }
 

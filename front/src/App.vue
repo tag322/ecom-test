@@ -270,6 +270,13 @@ export default {
         MainHeader, MainFooter
     },
     methods: {
+        async getCSRF() {
+            try {
+                const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL_NON_API}sanctum/csrf-cookie`)
+            } catch(err) {
+                console.log(err)
+            }
+        },
         async checkauth() {
             try {
                 const response = await axios.get('http://localhost:8000/api/check-auth', {
@@ -337,10 +344,10 @@ export default {
     watch:{
         $route (to, from){
 
+                this.getCSRF()
                 this.checkauth()
                 this.getCart()
-            
-                
+                    
         }
     } 
   }
