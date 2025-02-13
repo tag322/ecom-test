@@ -56,7 +56,7 @@ class CategoriesApiController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -131,21 +131,41 @@ class CategoriesApiController extends Controller
     }
 
     public function product_counter($id) {
+        $redis = false;
+        try{
+            Redis::connect('127.0.0.1',3306);
+            $redis = true;
+        }catch(\Predis\Connection\ConnectionException $e){
+            $redis = false;
+        }
+        if($redis) {
+            $cache = Cache::get('category-counter-all');
+        }
 
-        $cache = Cache::get('category-counter-all');
-
-        if($cache) {
+        if(isset($cache) && $cache == true) {
             return $cache; 
         }
 
         $ids = explode('-', $id);
         $counts = [];
-        foreach($ids as $i) {
-            array_push($counts, Product::query()->where('category_id', $i)->count());
+        $products = Product::all();
+
+        foreach($ids as $id) {
+            $counts[$id] = 0;
         }
 
-        Cache::set('category-counter-all', json_encode($counts), $seconds = 300);
+        foreach($products as $product) {
+            $counts[$product->category_id]++;
+        }
 
+
+        // foreach($ids as $i) {
+        //     array_push($counts, Product::query()->where('category_id', $i)->count());
+        // }
+        
+        if($redis) {
+            Cache::set('category-counter-all', json_encode($counts), $seconds = 3600);
+        }
         return $counts;
     }
 

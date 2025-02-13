@@ -8,10 +8,14 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
+use App\Models\ProductReview;
+use App\Models\ReviewRating;
 use App\Models\ProductVariants;
 use Illuminate\Support\Str;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+
+use Illuminate\Support\Facades\Log;
 
 class ProductsApiController extends Controller implements HasMiddleware
 {
@@ -22,7 +26,7 @@ class ProductsApiController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('auth:sanctum', except: ['index', 'show', 'getProd']),
+            // new Middleware('auth:sanctum', except: ['index', 'show', 'getProd']),
         ];
     }
 
@@ -126,7 +130,9 @@ class ProductsApiController extends Controller implements HasMiddleware
 
     //get single one prodcut
     public function getProd($slug) {
-        $product = Product::where('slug', $slug)->with('variants:product_id,price,title,is_primary_variant,id')->first();
+        $product = Product::where('slug', $slug)->with(['variants.discount', 'specs'])->first();
+
+        $product->related = $product->related_products();
 
         return $product;
     }
@@ -220,5 +226,108 @@ class ProductsApiController extends Controller implements HasMiddleware
     {
         ProductVariants::where('product_id', $id)->delete();
         return Product::destroy($id);
+    }
+
+    public function addReview(Request $req, $id) {
+        $validated = $req->validate([
+            'product_id' => 'required',
+            'review_commentary' => 'required',
+            'review_pros' => 'required',
+            'review_cons' => 'required',
+            'grade' => 'required',
+        ]);
+
+        if($req->images) {
+            $image_paths = [];
+            $images = $req->file('images');
+            foreach($images as $image) {
+                $path = $image->store('review_images', 'user_content');
+                array_push($image_paths, $path);
+            }
+        }
+
+        ProductReview::create([
+            'user_id' => $req->user()->id,
+            'grade' => $validated['grade'],
+            'product_id' => $validated['product_id'],
+            'review_commentary' => $validated['review_commentary'],
+            'review_pros' => $validated['review_pros'],
+            'review_cons' => $validated['review_cons'],
+            'images_urls' => $image_paths ? json_encode($image_paths) : null,
+        ]);
+
+        return response('success', 200);
+    }
+
+    public function rateReview(Request $req) {
+        if(!$req->user()) {
+            return response('unauth', 403);
+        }
+
+        $validated = $req->validate([
+            'product_id' => 'required',
+            'review_id' => 'required',
+            'is_like' => 'required|boolean'
+        ]);
+
+        if($req->keyword === 'delete') {
+            ReviewRating::where([
+                ['user_id', '=', $req->user()->id],
+                ['review_id', '=', $req->review_id]
+            ])->delete();
+
+            return response('deleted', 200);
+        }
+
+        ReviewRating::updateOrCreate([
+            'user_id' => $req->user()->id,
+            'review_id' => $req->review_id,
+        ],
+        [
+            'is_like' => $req->is_like
+        ]
+        );
+
+        return response('success', 200); 
+    }
+
+    public function getReviews(Request $req, $id) {
+
+        $data = ProductReview::where('product_id', $id)->orderBy('created_at', 'DESC')->with(['reviewRating', 'user'])->get();
+        if($req->user()) {
+            $user = $req->user();
+        }
+
+        foreach($data as &$item) {
+            
+
+            $item->ratings = array('likes' => 0, 'dislikes' => 0);
+
+            $ratings = $item->ratings;
+
+            foreach($item->reviewRating as $rating) {
+
+                if($rating->is_like) {
+                    $ratings['likes']++;
+                } else {
+                    $ratings['dislikes']++;
+                }
+
+                if(isset($user) && $rating->user_id == $user->id) {
+                    $item->user_rated = $rating->is_like;
+                }
+            }
+
+            $item->ratings = $ratings;
+        }
+
+        unset($data->reviewRatings);
+
+        return $data;
+
+    }
+
+    public function getRatings(Request $req, $id) {
+        
     }
 }

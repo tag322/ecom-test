@@ -159,54 +159,15 @@
                     <input type="text" placeholder="Кварц-винил..." class="js-main-menu-search">
                 </div>
 
-                <div class="main-menu-content">
+                <div class="main-menu-content aboba">
 
                     <div class="main-menu-content__step step1">
                         <ul class="main-menu-list">
-                            <li>
-                                <a class="main-menu-link has-child" data-id="step2-laminat" href="/">Ламинат</a>
+                            <li v-for="category in $store.state.categories">
+                                <a class="main-menu-link has-child" data-id="step2-laminat" href="/">{{category.title}}</a>
                             </li>
                             <li>
-                                <a class="main-menu-link has-child" data-id="step2-pvx" href="/">ПВХ-плитка</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Инженерная доска</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">SPC Ламинат</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Паркетная доска</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Пробковый пол</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Биополы</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Паркет ёлка</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Массивная доска</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Новинки</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Популярные товары</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Рекомендуемые товары</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Акции</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Распродажи</a>
-                            </li>
-                            <li>
-                                <a class="main-menu-link" href="/">Уцененные товары</a>
+                                <a class="main-menu-link has-child" data-id="step2-laminat" href="/">1212</a>
                             </li>
                         </ul>
                     </div>
@@ -518,7 +479,36 @@
 </template>
 
 <script>
+import store from "../../store/index";
+import axios from "axios";
 
+export default {
+    methods: {
+        async fetchCats() {
+            try {               
+                const response = await axios.get('http://localhost:8000/api/categories', { params: {
+
+                }})
+
+                var cat_ids = []
+                response.data.forEach((iter) => {
+                    cat_ids.push(iter.id)
+                })
+                cat_ids = cat_ids.join('-')
+
+                
+                store.state.categories = response.data
+            } catch(err) {
+                alert(err)
+            } finally {
+
+            }
+        }
+    },
+    mounted() {
+        this.fetchCats()
+    }
+}
 </script>
 
 <style>

@@ -298,7 +298,6 @@ export default {
             this.requestPending = true
 
             localStorage.setItem('basket', JSON.stringify(this.basket))
-            console.log(this.basket)
 
             this.calcSum()
         },

@@ -35,6 +35,10 @@ Route::resource('/categories', 'App\Http\Controllers\CategoriesApiController');
 Route::resource('/attributes', 'App\Http\Controllers\AttributesController');
 
 Route::get('/product/{slug}', 'App\Http\Controllers\ProductsApiController@getProd');
+Route::post('/product/{id}/add_review', 'App\Http\Controllers\ProductsApiController@addReview'); 
+Route::get('/product/get_reviews/{id}', 'App\Http\Controllers\ProductsApiController@getReviews'); 
+Route::post('/product/rate_review/{id}', 'App\Http\Controllers\ProductsApiController@rateReview'); 
+// Route::get('/product/{id}/reviews', 'App\Http\Controllers\ProductsApiController@getReviews');
 Route::resource('/products', 'App\Http\Controllers\ProductsApiController');
 
 Route::get('/brands/{brand}', 'App\Http\Controllers\BrandsApiController@index');

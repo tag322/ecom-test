@@ -12,13 +12,18 @@ import ResetPassword from "../pages/Auth/ResetPassword"
 import LK from "../pages/LK"
 import PageNotFound from "../pages/PageNotFound"
 import ChangePassword from '@/pages/Auth/ChangePassword.vue'
+import Index from '@/pages/Index.vue'
+
 
 import LKRoutes from './lk'
 // import HomeView from '../views/HomeView.vue'
 
 const BaseRoutes = [
 
-  
+  {
+    path: '/',
+    component: Index
+  },
   {
     path: '/catalog',
     component: Catalog

@@ -21,6 +21,7 @@ front/*.njsproj
 front/*.sln
 front/*.sw?
 front/.env
+front/public/review_images
 
 back/node_modules
 back/vendor

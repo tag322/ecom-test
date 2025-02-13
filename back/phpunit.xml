@@ -5,15 +5,16 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="BasketActions">
-            <file>tests/Feature/BasketActionsTest.php</file>
-        </testsuite>
-        <!-- <testsuite name="Unit">
-            <directory>tests/Unit</directory>
-        </testsuite>
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
-        </testsuite> -->
+            <exclude>
+                <directory suffix=".php">tests/Feature/Auth</directory>
+            </exclude>
+        </testsuite>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        
     </testsuites>
     <source>
         <include>

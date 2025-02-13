@@ -36,6 +36,12 @@ return [
             'throw' => false,
         ],
 
+        'user_content' => [
+            'driver' => 'local',
+            'root' => 'D:\laravel_test\vkvadrate_spa\front\public',
+            'throw' => false,
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

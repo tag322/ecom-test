@@ -36,10 +36,7 @@ class BasketController extends Controller
             $basket = Basket::firstOrCreate(
                 ['session_id' => $req->session()->getId()]
             );
-            
-        }
-           
-        $basket = Basket::where('id', $basket->id)->with('products_payload.payload.parent_product')->first();
+        }  
 
         if($req->quantity == 0) {
             BasketPayload::where([
@@ -50,24 +47,25 @@ class BasketController extends Controller
             $basket_payload = BasketPayload::updateOrCreate(['basket_id' => $basket->id, 'product_id' => $req->product_id], ['quantity' => $req->quantity]);
         }
 
+        $basket = Basket::where('id', $basket->id)->with('products_payload.payload.parent_product')->first();
 
-        $found = false;
-        foreach($basket->products_payload as $key => $product) {
-            if($product->product_id == $req->product_id) {
-                $found = $key;
-            }
-        }
+        // $found = false;
+        // foreach($basket->products_payload as $key => $product) {
+        //     if($product->product_id == $req->product_id) {
+        //         $found = $key;
+        //     }
+        // }
 
-        if(gettype($found) === "integer") {
-            if($req->quantity == 0) {
-                unset($basket->products_payload[$found]);
+        // if(gettype($found) === "integer") {
+        //     if($req->quantity == 0) {
+        //         unset($basket->products_payload[$found]);
 
-                return $basket; 
-            }
-            $basket->products_payload[$found]->quantity = $req->quantity;
-        } else {
-            $basket->products_payload->push($basket_payload);
-        }
+        //         return $basket; 
+        //     }
+        //     $basket->products_payload[$found]->quantity = $req->quantity;
+        // } else {
+        //     $basket->products_payload->push($basket_payload);
+        // }
 
         return $basket;
     }

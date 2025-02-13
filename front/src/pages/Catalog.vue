@@ -1,7 +1,7 @@
 <template>
 
 <!-- <button type="button" @click="console.log($store.state.cart_items_count)">aboba</button> -->
-        <div class="main-menu">
+        <!-- <div class="main-menu">
             <div class="main-menu-fade js-close-main-menu"></div>
             <div class="content">
 
@@ -269,7 +269,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="mobile-menu">
             <div class="main-menu-fade js-close-mobile-menu"></div>
@@ -1641,6 +1641,7 @@
 
 <script>
 import axios from "axios";
+import store from "../store/index";
 import { toRaw } from "vue";
 import ProductCard from "@/components/ProductCard";
 import PriceFilter from "@/components/ui/PriceFilter";
@@ -1738,60 +1739,40 @@ export default {
             
 
             this.products.forEach((prod, index) => {
-
-                
-
                 const basketInfoAcc = []
                 const prodVariantsIds = prod.variants.map(i => i['id'])
 
-                
-
-
-                basket.forEach((el) => {
-
-                    
-
+                basket.forEach((el) => {   
                     if(prodVariantsIds.includes(el.product_id)) {
                         basketInfoAcc.push({'quantity': el.quantity, 'variant_id': el.product_id})
                     }
                 })
-
-            
                 
                 if(basketInfoAcc.length > 0) {
                     this.products[index]['inBasketInfo'] = basketInfoAcc
-                }
+                }     
             })
 
-            // console.log(this.products)
+            console.log(this.products)
             
         },
         async fetchCats() {
 
-            try {               
-                const response = await axios.get('http://localhost:8000/api/categories', { params: {
+            this.categs = store.state.categories
 
-                }})
-
-                var cat_ids = []
-                response.data.forEach((iter) => {
+            var cat_ids = []
+                this.categs.forEach((iter) => {
                     cat_ids.push(iter.id)
                 })
-                cat_ids = cat_ids.join('-')
+            cat_ids = cat_ids.join('-')
 
-                const prod_counter = await axios.get('http://localhost:8000/api/products_in_cat_count/' + cat_ids, { params: {
+            const prod_counter = await axios.get('http://localhost:8000/api/products_in_cat_count/' + cat_ids, { params: {
                     
-                }})
+            }})
 
-                this.prod_counter = prod_counter.data
-                this.categs = response.data
-            } catch(err) {
-                alert(err)
-            } finally {
-
-            }
-
-            this.categs.forEach((iter, index, array) => array[index]['elements_count'] = this.prod_counter[index] )
+            this.prod_counter = prod_counter.data
+    
+            this.categs.forEach((iter, index, array) => array[index]['elements_count'] = this.prod_counter[iter.id] )
             
         },
         updateFilter(event, type, slug) {
@@ -2032,7 +2013,7 @@ export default {
     async mounted() {
         this.form_filterstring(),
 
-        await Promise.all([this.fetchData(), this.fetchCats(), this.get_cat_attrs()]),
+        await Promise.all([this.fetchData(), this.get_cat_attrs()]),
 
         this.checkBasketPresence()
     },
@@ -2040,8 +2021,8 @@ export default {
         
     },
     watch: {
-        filterstring() {
-            
+        '$store.state.categories': function() {
+            this.fetchCats()
         }
     }
 

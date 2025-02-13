@@ -54,7 +54,7 @@
 
                 <a href="/lk-personal.html" class="lk-user-head">
                     <div class="lk-user-head-val">
-                        <div class="lk-user__desc">Личные данные бля</div>
+                        <div class="lk-user__desc">Личные данные</div>
                         <h3 class="lk-user__name" v-if="userData !== undefined">{{userData.name}}</h3>
                     </div>
                     <div class="lk-user-head__arrow">

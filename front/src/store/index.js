@@ -7,13 +7,11 @@ export default createStore({
   
   state: {
     isAuth: null,
-
     message: '',
-
     cart_items_count: 0,
     cart: [],
-
-    user: {}
+    user: {},
+    categories: [],
   },
   getters: {
     getMessage(state) {
@@ -26,8 +24,6 @@ export default createStore({
     setMessage(state,message) {
       state.message = message
     }
-    
-
   },
   actions: {
 

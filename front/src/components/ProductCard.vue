@@ -127,9 +127,11 @@ export default {
     }, 
     methods: {
         getPrice() {
+
+            
             var priceArr = []
             this.product.variants.forEach((iter) => {
-                priceArr.push([iter.id, iter.price, iter.discount !== null ? iter.discount.discount_percent : null,  iter.is_primary_variant])
+                priceArr.push([iter.id, iter.price, iter.discount != null ? iter.discount.discount_percent : null,  iter.is_primary_variant])
 
 
 
@@ -172,6 +174,12 @@ export default {
                     product_id: this.selected_variant,
                     quantity: Number(quantity)
                 }
+
+                this.product.inBasketInfo.map((elem) => {
+                    if(elem.variant_id == this.selected_variant) {
+                        elem.quantity = Number(quantity)
+                    }
+                })
 
                 let response = await new Promise((resolve, reject) => {
                     clearTimeout(this.timeout)

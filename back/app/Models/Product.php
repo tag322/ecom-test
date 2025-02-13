@@ -43,13 +43,16 @@ class Product extends Model
         return $this->belongsToMany(Attributes::class, 'product_attributes_values', 'product_id', 'attribute_id')->withPivot('value');
     }
 
-    
-
     public function specs() {
         return $this->belongsToMany(Specifity::class, 'product_specs', 'product_id', 'specificity_id');
     }
 
     public function images() {
         return $this->hasMany(ProductImage::class, 'product_id');
-    } 
+    }
+    
+    public function related_products() {
+        return Product::where([['category_id', '=', $this->category_id], ['id', '!=', $this->id]])->with(['variants:product_id,price,title,is_primary_variant,id', 'specs'])->limit(4)->get();
+    }
+
 }
